@@ -105,7 +105,7 @@ class Form extends React.Component {
             checked={ cardTrunfo }
             onChange={ onInputChange }
             id="super"
-            name="super"
+            name="superT"
             data-testid="trunfo-input"
             type="checkbox"
           />
@@ -114,6 +114,7 @@ class Form extends React.Component {
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
           id="save"
+          name="save"
           type="button"
           data-testid="save-button"
         >
