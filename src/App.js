@@ -2,6 +2,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Delete from './components/Delete';
 import './App.css';
 
 class App extends React.Component {
@@ -65,6 +66,15 @@ class App extends React.Component {
     }));
   };
 
+  deleteCard = ({ target }) => {
+    const { savedCards } = this.state;
+    const name = target.value;
+    const newCards = savedCards.flatMap((el) => el)
+      .filter((el) => el.name !== name);
+    this.setState(({ savedCards: newCards }));
+    // Luá Octaviano me ajudou a desempacar nesse requisito <3
+  };
+
   render() {
     const { name, description, attr1, attr2, attr3, card, rarity, superT } = this.state;
     const { savedCards } = this.state;
@@ -124,16 +134,19 @@ class App extends React.Component {
           <p>Lista de cartas</p>
           {
             savedCards.flatMap((el) => el).map((sCard) => (
-              <Card
-                cardName={ sCard.name }
-                cardDescription={ sCard.description }
-                cardAttr1={ sCard.attr1 }
-                cardAttr2={ sCard.attr2 }
-                cardAttr3={ sCard.attr3 }
-                cardImage={ sCard.card }
-                cardRare={ sCard.rarity }
-                cardTrunfo={ sCard.superT }
-              />))
+              <div className="card-list-container">
+                <Card
+                  cardName={ sCard.name }
+                  cardDescription={ sCard.description }
+                  cardAttr1={ sCard.attr1 }
+                  cardAttr2={ sCard.attr2 }
+                  cardAttr3={ sCard.attr3 }
+                  cardImage={ sCard.card }
+                  cardRare={ sCard.rarity }
+                  cardTrunfo={ sCard.superT }
+                />
+                <Delete cardName={ sCard.name } deleteCard={ this.deleteCard } />
+              </div>))
           }
         </main>
       </>
