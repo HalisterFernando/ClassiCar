@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
@@ -89,35 +90,51 @@ class App extends React.Component {
           <h1>Tryunfo</h1>
         </header>
         <main>
-          <section>
-            <Form
-              cardName={ name }
-              cardDescription={ description }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ card }
-              cardRare={ rarity }
-              cardTrunfo={ superT }
-              onInputChange={ this.handleChange }
-              isSaveButtonDisabled={ !(checkValues && checkAtt) }
-              onSaveButtonClick={ this.saveCard }
-              hasTrunfo={ checkTrunfo.some((el) => el === true) }
-            />
-          </section>
-          <section>
-            <Card
-              cardName={ name }
-              cardDescription={ description }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ card }
-              cardRare={ rarity }
-              cardTrunfo={ superT }
-              onInputChange={ this.handleChange }
-            />
-          </section>
+          <div className="container">
+            <section>
+              <Form
+                cardName={ name }
+                cardDescription={ description }
+                cardAttr1={ attr1 }
+                cardAttr2={ attr2 }
+                cardAttr3={ attr3 }
+                cardImage={ card }
+                cardRare={ rarity }
+                cardTrunfo={ superT }
+                onInputChange={ this.handleChange }
+                isSaveButtonDisabled={ !(checkValues && checkAtt) }
+                onSaveButtonClick={ this.saveCard }
+                hasTrunfo={ checkTrunfo.some((el) => el === true) }
+              />
+            </section>
+            <section>
+              <Card
+                cardName={ name }
+                cardDescription={ description }
+                cardAttr1={ attr1 }
+                cardAttr2={ attr2 }
+                cardAttr3={ attr3 }
+                cardImage={ card }
+                cardRare={ rarity }
+                cardTrunfo={ superT }
+                onInputChange={ this.handleChange }
+              />
+            </section>
+          </div>
+          <p>Lista de cartas</p>
+          {
+            savedCards.flatMap((el) => el).map((sCard) => (
+              <Card
+                cardName={ sCard.name }
+                cardDescription={ sCard.description }
+                cardAttr1={ sCard.attr1 }
+                cardAttr2={ sCard.attr2 }
+                cardAttr3={ sCard.attr3 }
+                cardImage={ sCard.card }
+                cardRare={ sCard.rarity }
+                cardTrunfo={ sCard.superT }
+              />))
+          }
         </main>
       </>
     );
