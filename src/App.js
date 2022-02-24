@@ -16,6 +16,7 @@ class App extends React.Component {
       card: '',
       rarity: '',
       superT: false,
+      savedCards: [],
     };
   }
 
@@ -27,11 +28,49 @@ class App extends React.Component {
     });
   };
 
+  saveCard = () => {
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      card,
+      rarity,
+      superT,
+      savedCards } = this.state;
+
+    const cardInfo = [{
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      card,
+      rarity,
+      superT,
+      savedCards,
+    }];
+
+    this.setState((prevState) => ({
+      name: '',
+      description: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      card: '',
+      rarity: 'normal',
+      superT: false,
+      savedCards: [...prevState.savedCards, cardInfo],
+    }));
+  };
+
   render() {
     const { name, description, attr1, attr2, attr3, card, rarity, superT } = this.state;
 
     const inputArr = [name, description, card, rarity];
     const attArr = [attr1, attr2, attr3];
+
     const maxAtt = 90;
     const minAtt = 0;
     const limitAtt = 210;
@@ -60,6 +99,7 @@ class App extends React.Component {
               cardTrunfo={ superT }
               onInputChange={ this.handleChange }
               isSaveButtonDisabled={ !(checkValues && checkAtt) }
+              onSaveButtonClick={ this.saveCard }
             />
           </section>
           <section>
