@@ -27,12 +27,21 @@ class App extends React.Component {
     });
   };
 
-  saveButton = () => {
-    console.log(Object.values(this.state));
-  };
-
   render() {
     const { name, description, attr1, attr2, attr3, card, rarity, superT } = this.state;
+
+    const inputArr = [name, description, card, rarity];
+    const attArr = [attr1, attr2, attr3];
+    const maxAtt = 90;
+    const minAtt = 0;
+    const limitAtt = 210;
+
+    const sumAtt = attArr.map((att) => Number(att)).reduce((acc, curr) => acc + curr);
+
+    const checkValues = inputArr.every((value) => value !== '');
+    const checkAtt = attArr.every((att) => (
+      att <= maxAtt && att >= minAtt && sumAtt <= limitAtt));
+
     return (
       <>
         <header>
@@ -50,6 +59,7 @@ class App extends React.Component {
               cardRare={ rarity }
               cardTrunfo={ superT }
               onInputChange={ this.handleChange }
+              isSaveButtonDisabled={ !(checkValues && checkAtt) }
             />
           </section>
           <section>
@@ -65,7 +75,6 @@ class App extends React.Component {
               onInputChange={ this.handleChange }
             />
           </section>
-          {this.saveButton()}
         </main>
       </>
     );
