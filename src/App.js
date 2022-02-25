@@ -1,8 +1,9 @@
-/* eslint-disable react/jsx-key */
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import Delete from './components/Delete';
+import CardFilter from './components/CardFilter';
+
 import './App.css';
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
       card: '',
       rarity: '',
       superT: false,
+      filter: '',
       savedCards: [],
     };
   }
@@ -75,9 +77,58 @@ class App extends React.Component {
     // Luá Octaviano me ajudou a desempacar nesse requisito <3
   };
 
+  cardsToRender = () => {
+    const { savedCards, filter } = this.state;
+    const cardName = savedCards.flatMap((el) => el).map((el) => el.name === filter);
+    const cardsToFilter = savedCards.flatMap((el) => el).map((el) => el);
+    const filteredCard = cardsToFilter.filter((card) => card.name.includes(filter));
+    // Ao olhar o repositório da Láis Nametala o filter da forma errada!
+
+    if (cardName) {
+      return (
+        filteredCard.map((card) => (
+          <>
+            <Card
+              key={ card.name }
+              cardName={ card.name }
+              cardDescription={ card.description }
+              cardAttr1={ card.attr1 }
+              cardAttr2={ card.attr2 }
+              cardAttr3={ card.attr3 }
+              cardImage={ card.card }
+              cardRare={ card.rarity }
+              cardTrunfo={ card.superT }
+            />
+            <Delete cardName={ card.name } deleteCard={ this.deleteCard } />
+          </>
+        ))
+      );
+    }
+    return (
+      cardsToFilter.map((card) => (
+        <>
+          <Card
+            key={ card.name }
+            cardName={ card.name }
+            cardDescription={ card.description }
+            cardAttr1={ card.attr1 }
+            cardAttr2={ card.attr2 }
+            cardAttr3={ card.attr3 }
+            cardImage={ card.card }
+            cardRare={ card.rarity }
+            cardTrunfo={ card.superT }
+          />
+          <Delete cardName={ card.name } deleteCard={ this.deleteCard } />
+        </>
+
+      ))
+    );
+  };
+
   render() {
     const { name, description, attr1, attr2, attr3, card, rarity, superT } = this.state;
     const { savedCards } = this.state;
+    const { filter } = this.state;
 
     const inputArr = [name, description, card, rarity];
     const attArr = [attr1, attr2, attr3];
@@ -132,22 +183,11 @@ class App extends React.Component {
             </section>
           </div>
           <p>Lista de cartas</p>
-          {
-            savedCards.flatMap((el) => el).map((sCard) => (
-              <div className="card-list-container">
-                <Card
-                  cardName={ sCard.name }
-                  cardDescription={ sCard.description }
-                  cardAttr1={ sCard.attr1 }
-                  cardAttr2={ sCard.attr2 }
-                  cardAttr3={ sCard.attr3 }
-                  cardImage={ sCard.card }
-                  cardRare={ sCard.rarity }
-                  cardTrunfo={ sCard.superT }
-                />
-                <Delete cardName={ sCard.name } deleteCard={ this.deleteCard } />
-              </div>))
-          }
+          <CardFilter
+            filter={ filter }
+            onInputChange={ this.handleChange }
+          />
+          {this.cardsToRender()}
         </main>
       </>
     );
