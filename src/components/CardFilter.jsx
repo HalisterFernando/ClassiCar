@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 
 class CardFilter extends React.Component {
   render() {
-    const { filter, onInputChange } = this.props;
+    const { filter, onInputChange, isDisable } = this.props;
 
     return (
       <div>
@@ -15,6 +15,7 @@ class CardFilter extends React.Component {
             id="search"
             name="nameFilter"
             type="text"
+            disabled={ isDisable }
           />
         </label>
       </div>
@@ -25,6 +26,7 @@ class CardFilter extends React.Component {
 CardFilter.propTypes = {
   filter: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  isDisable: PropTypes.bool.isRequired,
 };
 
 export default CardFilter;

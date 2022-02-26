@@ -4,6 +4,7 @@ import Card from './components/Card';
 import Delete from './components/Delete';
 import CardFilter from './components/CardFilter';
 import RareFilter from './components/RareFilter';
+import Trunfo from './components/Trunfo';
 import './App.css';
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
       card: '',
       rarity: 'normal',
       superT: false,
+      isTrunfo: false,
       nameFilter: '',
       rareFilter: 'todas',
       savedCards: [],
@@ -26,10 +28,10 @@ class App extends React.Component {
   }
 
   handleChange = ({ target }) => {
-    const { name, value, id } = target;
+    const { name, value, type } = target;
 
     this.setState({
-      [name]: id === 'super' ? target.checked : value,
+      [name]: type === 'checkbox' ? target.checked : value,
     });
   };
 
@@ -65,6 +67,7 @@ class App extends React.Component {
       card: '',
       rarity: 'normal',
       superT: false,
+      isTrunfo: false,
       savedCards: [...prevState.savedCards, cardInfo],
     }));
   };
@@ -98,7 +101,7 @@ class App extends React.Component {
   );
 
   cardsToRender = () => {
-    const { savedCards, nameFilter, rareFilter } = this.state;
+    const { savedCards, nameFilter, rareFilter, isTrunfo } = this.state;
     const cardsToFilter = savedCards.flatMap((el) => el).map((el) => el);
 
     let filteredCard = cardsToFilter.filter((card) => card.name.includes(nameFilter));
@@ -107,12 +110,16 @@ class App extends React.Component {
       filteredCard = cardsToFilter.filter((card) => card.rarity === rareFilter);
     }
 
+    if (isTrunfo) {
+      filteredCard = cardsToFilter.filter((card) => card.superT === true);
+    }
+
     return this.filterRender(filteredCard);
   };
 
   render() {
     const { name, description, attr1, attr2, attr3, card, rarity, superT } = this.state;
-    const { savedCards, nameFilter, rareFilter } = this.state;
+    const { savedCards, nameFilter, rareFilter, isTrunfo } = this.state;
 
     const inputArr = [name, description, card, rarity];
     const attArr = [attr1, attr2, attr3];
@@ -134,52 +141,58 @@ class App extends React.Component {
         <header>
           <h1>Tryunfo</h1>
         </header>
-        <main>
-          <div className="container">
-            <section>
-              <Form
-                cardName={ name }
-                cardDescription={ description }
-                cardAttr1={ attr1 }
-                cardAttr2={ attr2 }
-                cardAttr3={ attr3 }
-                cardImage={ card }
-                cardRare={ rarity }
-                cardTrunfo={ superT }
-                onInputChange={ this.handleChange }
-                isSaveButtonDisabled={ !(checkValues && checkAtt) }
-                onSaveButtonClick={ this.saveCard }
-                hasTrunfo={ checkTrunfo.some((el) => el === true) }
-              />
-            </section>
-            <section>
-              <Card
-                cardName={ name }
-                cardDescription={ description }
-                cardAttr1={ attr1 }
-                cardAttr2={ attr2 }
-                cardAttr3={ attr3 }
-                cardImage={ card }
-                cardRare={ rarity }
-                cardTrunfo={ superT }
-                onInputChange={ this.handleChange }
-              />
-            </section>
-          </div>
-          <p>Lista de cartas</p>
-          <CardFilter
-            filter={ nameFilter }
-            onInputChange={ this.handleChange }
-          />
-          <RareFilter
-            onInputChange={ this.handleChange }
-            rare={ rareFilter }
-          />
-          {
-            this.cardsToRender()
-          }
-        </main>
+
+        <div className="container">
+          <section>
+            <Form
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ card }
+              cardRare={ rarity }
+              cardTrunfo={ superT }
+              onInputChange={ this.handleChange }
+              isSaveButtonDisabled={ !(checkValues && checkAtt) }
+              onSaveButtonClick={ this.saveCard }
+              hasTrunfo={ checkTrunfo.some((el) => el === true) }
+            />
+          </section>
+          <section>
+            <Card
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ card }
+              cardRare={ rarity }
+              cardTrunfo={ superT }
+              onInputChange={ this.handleChange }
+            />
+          </section>
+        </div>
+        <p>Lista de cartas</p>
+        <CardFilter
+          filter={ nameFilter }
+          onInputChange={ this.handleChange }
+          isDisable={ !!isTrunfo }
+        />
+        <RareFilter
+          onInputChange={ this.handleChange }
+          rare={ rareFilter }
+          isDisable={ !!isTrunfo }
+        />
+        <Trunfo
+          isChecked={ isTrunfo }
+          onInputChange={ this.handleChange }
+        />
+        {
+          this.cardsToRender()
+        }
       </>
+
     );
   }
 }
