@@ -3,7 +3,7 @@ import Form from './components/Form';
 import Card from './components/Card';
 import Delete from './components/Delete';
 import CardFilter from './components/CardFilter';
-
+import RareFilter from './components/RareFilter';
 import './App.css';
 
 class App extends React.Component {
@@ -17,9 +17,10 @@ class App extends React.Component {
       attr2: '',
       attr3: '',
       card: '',
-      rarity: '',
+      rarity: 'normal',
       superT: false,
-      filter: '',
+      nameFilter: '',
+      rareFilter: 'todas',
       savedCards: [],
     };
   }
@@ -77,58 +78,41 @@ class App extends React.Component {
     // Luá Octaviano me ajudou a desempacar nesse requisito <3
   };
 
+  filterRender = (arr) => (
+    arr.map((card) => (
+      <>
+        <Card
+          key={ card.name }
+          cardName={ card.name }
+          cardDescription={ card.description }
+          cardAttr1={ card.attr1 }
+          cardAttr2={ card.attr2 }
+          cardAttr3={ card.attr3 }
+          cardImage={ card.card }
+          cardRare={ card.rarity }
+          cardTrunfo={ card.superT }
+        />
+        <Delete cardName={ card.name } deleteCard={ this.deleteCard } />
+      </>
+    ))
+  );
+
   cardsToRender = () => {
-    const { savedCards, filter } = this.state;
-    const cardName = savedCards.flatMap((el) => el).map((el) => el.name === filter);
+    const { savedCards, nameFilter, rareFilter } = this.state;
     const cardsToFilter = savedCards.flatMap((el) => el).map((el) => el);
-    const filteredCard = cardsToFilter.filter((card) => card.name.includes(filter));
-    // Ao olhar o repositório da Láis Nametala o filter da forma errada!
 
-    if (cardName) {
-      return (
-        filteredCard.map((card) => (
-          <>
-            <Card
-              key={ card.name }
-              cardName={ card.name }
-              cardDescription={ card.description }
-              cardAttr1={ card.attr1 }
-              cardAttr2={ card.attr2 }
-              cardAttr3={ card.attr3 }
-              cardImage={ card.card }
-              cardRare={ card.rarity }
-              cardTrunfo={ card.superT }
-            />
-            <Delete cardName={ card.name } deleteCard={ this.deleteCard } />
-          </>
-        ))
-      );
+    let filteredCard = cardsToFilter.filter((card) => card.name.includes(nameFilter));
+
+    if (rareFilter !== 'todas') {
+      filteredCard = cardsToFilter.filter((card) => card.rarity === rareFilter);
     }
-    return (
-      cardsToFilter.map((card) => (
-        <>
-          <Card
-            key={ card.name }
-            cardName={ card.name }
-            cardDescription={ card.description }
-            cardAttr1={ card.attr1 }
-            cardAttr2={ card.attr2 }
-            cardAttr3={ card.attr3 }
-            cardImage={ card.card }
-            cardRare={ card.rarity }
-            cardTrunfo={ card.superT }
-          />
-          <Delete cardName={ card.name } deleteCard={ this.deleteCard } />
-        </>
 
-      ))
-    );
+    return this.filterRender(filteredCard);
   };
 
   render() {
     const { name, description, attr1, attr2, attr3, card, rarity, superT } = this.state;
-    const { savedCards } = this.state;
-    const { filter } = this.state;
+    const { savedCards, nameFilter, rareFilter } = this.state;
 
     const inputArr = [name, description, card, rarity];
     const attArr = [attr1, attr2, attr3];
@@ -184,10 +168,16 @@ class App extends React.Component {
           </div>
           <p>Lista de cartas</p>
           <CardFilter
-            filter={ filter }
+            filter={ nameFilter }
             onInputChange={ this.handleChange }
           />
-          {this.cardsToRender()}
+          <RareFilter
+            onInputChange={ this.handleChange }
+            rare={ rareFilter }
+          />
+          {
+            this.cardsToRender()
+          }
         </main>
       </>
     );

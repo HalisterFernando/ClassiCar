@@ -13,7 +13,7 @@ class CardFilter extends React.Component {
             onChange={ onInputChange }
             data-testid="name-filter"
             id="search"
-            name="filter"
+            name="nameFilter"
             type="text"
           />
         </label>
