@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 /* eslint-disable indent */
 /* eslint-disable comma-dangle */
 import propTypes from 'prop-types';
