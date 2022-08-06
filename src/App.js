@@ -1,200 +1,52 @@
 import React from 'react';
-import Form from './components/Form';
+import { Route, Routes } from 'react-router-dom';
 import Card from './components/Card';
-import Delete from './components/Delete';
 import CardFilter from './components/CardFilter';
-import RareFilter from './components/RareFilter';
-import Trunfo from './components/Trunfo';
-import './App.css';
+import Footer from './components/Footer';
+import Form from './components/Form';
+import Gameplay from './components/Gameplay';
+import Header from './components/Header';
+import Rules from './components/Rules';
+import Container from './components/styles/Fonts';
+import FormContainer from './components/styles/FormContainer';
+import CardPreview from './components/styles/PreviewStyles';
 
-class App extends React.Component {
-  constructor() {
-    super();
+import './index.css';
 
-    this.state = {
-      name: '',
-      description: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
-      card: '',
-      rarity: 'normal',
-      superT: false,
-      isTrunfo: false,
-      nameFilter: '',
-      rareFilter: 'todas',
-      savedCards: [],
-    };
-  }
-
-  handleChange = ({ target }) => {
-    const { name, value, type } = target;
-
-    this.setState({
-      [name]: type === 'checkbox' ? target.checked : value,
-    });
-  };
-
-  saveCard = () => {
-    const {
-      name,
-      description,
-      attr1,
-      attr2,
-      attr3,
-      card,
-      rarity,
-      superT,
-    } = this.state;
-
-    const cardInfo = [{
-      name,
-      description,
-      attr1,
-      attr2,
-      attr3,
-      card,
-      rarity,
-      superT,
-    }];
-
-    this.setState((prevState) => ({
-      name: '',
-      description: '',
-      attr1: '0',
-      attr2: '0',
-      attr3: '0',
-      card: '',
-      rarity: 'normal',
-      superT: false,
-      isTrunfo: false,
-      savedCards: [...prevState.savedCards, cardInfo],
-    }));
-  };
-
-  deleteCard = ({ target }) => {
-    const { savedCards } = this.state;
-    const name = target.value;
-    const newCards = savedCards.flatMap((el) => el)
-      .filter((el) => el.name !== name);
-    this.setState(({ savedCards: newCards }));
-    // Luá Octaviano me ajudou a desempacar nesse requisito <3
-  };
-
-  filterRender = (arr) => (
-    arr.map((card) => (
-      <>
-        <Card
-          key={ card.name }
-          cardName={ card.name }
-          cardDescription={ card.description }
-          cardAttr1={ card.attr1 }
-          cardAttr2={ card.attr2 }
-          cardAttr3={ card.attr3 }
-          cardImage={ card.card }
-          cardRare={ card.rarity }
-          cardTrunfo={ card.superT }
-        />
-        <Delete cardName={ card.name } deleteCard={ this.deleteCard } />
-      </>
-    ))
-  );
-
-  cardsToRender = () => {
-    const { savedCards, nameFilter, rareFilter, isTrunfo } = this.state;
-    const cardsToFilter = savedCards.flatMap((el) => el).map((el) => el);
-
-    let filteredCard = cardsToFilter.filter((card) => card.name.includes(nameFilter));
-
-    if (rareFilter !== 'todas') {
-      filteredCard = cardsToFilter.filter((card) => card.rarity === rareFilter);
-    }
-
-    if (isTrunfo) {
-      filteredCard = cardsToFilter.filter((card) => card.superT === true);
-    }
-
-    return this.filterRender(filteredCard);
-  };
-
-  render() {
-    const { name, description, attr1, attr2, attr3, card, rarity, superT } = this.state;
-    const { savedCards, nameFilter, rareFilter, isTrunfo } = this.state;
-
-    const inputArr = [name, description, card, rarity];
-    const attArr = [attr1, attr2, attr3];
-
-    const maxAtt = 90;
-    const minAtt = 0;
-    const limitAtt = 210;
-
-    const sumAtt = attArr.map((att) => Number(att)).reduce((acc, curr) => acc + curr);
-
-    const checkValues = inputArr.every((value) => value !== '');
-    const checkAtt = attArr.every((att) => (
-      att <= maxAtt && att >= minAtt && sumAtt <= limitAtt));
-
-    const checkTrunfo = savedCards.flatMap((el) => el).map((sCard) => sCard.superT);
-
-    return (
-      <>
-        <header>
-          <h1>Tryunfo</h1>
-        </header>
-
-        <div className="container">
-          <section>
-            <Form
-              cardName={ name }
-              cardDescription={ description }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ card }
-              cardRare={ rarity }
-              cardTrunfo={ superT }
-              onInputChange={ this.handleChange }
-              isSaveButtonDisabled={ !(checkValues && checkAtt) }
-              onSaveButtonClick={ this.saveCard }
-              hasTrunfo={ checkTrunfo.some((el) => el === true) }
-            />
-          </section>
-          <section>
-            <Card
-              cardName={ name }
-              cardDescription={ description }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ card }
-              cardRare={ rarity }
-              cardTrunfo={ superT }
-              onInputChange={ this.handleChange }
-            />
-          </section>
-        </div>
-        <p>Lista de cartas</p>
-        <CardFilter
-          filter={ nameFilter }
-          onInputChange={ this.handleChange }
-          isDisable={ !!isTrunfo }
-        />
-        <RareFilter
-          onInputChange={ this.handleChange }
-          rare={ rareFilter }
-          isDisable={ !!isTrunfo }
-        />
-        <Trunfo
-          isChecked={ isTrunfo }
-          onInputChange={ this.handleChange }
-        />
-        {
-          this.cardsToRender()
+export default function App() {
+  return (
+    <Routes>
+      <Route
+        exact
+        path="/"
+        element={
+          <Container>
+            <Rules />
+            <Header />
+            <FormContainer>
+              <Form />
+              <CardPreview>
+                <h1>Pré-visualização</h1>
+                <Card />
+              </CardPreview>
+            </FormContainer>
+            <CardFilter />
+            <Footer />
+          </Container>
         }
-      </>
-
-    );
-  }
+      />
+      <Route
+        exatc
+        path="/gameplay"
+        element={
+          <>
+            <Rules />
+            <Header />
+            <Gameplay />
+            <Footer />
+          </>
+        }
+      />
+    </Routes>
+  );
 }
-
-export default App;

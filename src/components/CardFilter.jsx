@@ -1,32 +1,89 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React, { useContext } from 'react';
+import CardContext from '../context/CardContext';
+import ShowCards from './ShowCards';
+import {
+  DeleteButton, DisplayCards,
+  // eslint-disable-next-line comma-dangle
+  FilterContainer, Options, Search, SearchLabel
+} from './styles/CardFilterStyles';
 
-class CardFilter extends React.Component {
-  render() {
-    const { filter, onInputChange, isDisable } = this.props;
+export default function CardFilter() {
+  const { savedCards, removeCard, filter, handleFilter } = useContext(CardContext);
 
-    return (
-      <div>
-        <label htmlFor="search">
-          <input
-            value={ filter }
-            onChange={ onInputChange }
-            data-testid="name-filter"
-            id="search"
-            name="nameFilter"
-            type="text"
-            disabled={ isDisable }
-          />
-        </label>
+  const renderCards = () => {
+    let cardsToRender = [...savedCards];
+    if (filter.search) {
+      cardsToRender = cardsToRender.filter(({ name }) => name.includes(filter.search));
+    }
+    if (filter.rarity !== 'todas') {
+      cardsToRender = cardsToRender.filter(({ rarity }) => rarity[filter.rarity]);
+    }
+    if (filter.isTrunfo) {
+      cardsToRender = cardsToRender.filter(({ isTrunfo }) => isTrunfo === true);
+    }
+
+    return cardsToRender.length > 0 && cardsToRender.map((card) => (
+      <div key={ card.name }>
+        <ShowCards
+          name={ card.name }
+          image={ card.image }
+          description={ card.description }
+          att1={ card.attributes.velocidade }
+          att2={ card.attributes.peso }
+          att3={ card.attributes.comprimento }
+          rarity={ card.rarity }
+          superTrunfo={ card.isTrunfo }
+          licenseName={ card.license.name }
+          author={ card.license.author }
+          link={ card.license.link }
+        />
+        <DeleteButton
+          onClick={ () => removeCard(card.name) }
+          type="button"
+        >
+          Remover
+        </DeleteButton>
       </div>
-    );
-  }
+    ));
+  };
+
+  return (
+    <FilterContainer>
+      <SearchLabel htmlFor="search">
+        <Search>Encontre a carta desejada</Search>
+        <input
+          id="search"
+          name="search"
+          type="text"
+          value={ filter.search }
+          onChange={ handleFilter }
+          placeholder="Digite o nome da carta"
+        />
+      </SearchLabel>
+      <Options>
+        <p>Raridade</p>
+        <select
+          data-testid="rare-filter"
+          name="rarity"
+          onChange={ handleFilter }
+        >
+          <option value="todas">Todas</option>
+          <option value="normal">Normal</option>
+          <option value="raro">Raro</option>
+          <option value="muitoRaro">Muito Raro</option>
+        </select>
+        <input
+          id="super-trunfo"
+          type="checkbox"
+          name="isTrunfo"
+          checked={ filter.isTrunfo }
+          onChange={ handleFilter }
+        />
+        <p>Super Trunfo</p>
+      </Options>
+      <DisplayCards>
+        {renderCards()}
+      </DisplayCards>
+    </FilterContainer>
+  );
 }
-
-CardFilter.propTypes = {
-  filter: PropTypes.string.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  isDisable: PropTypes.bool.isRequired,
-};
-
-export default CardFilter;

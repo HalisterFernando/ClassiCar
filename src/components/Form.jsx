@@ -1,154 +1,148 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
-import './form.css';
+/* eslint-disable no-magic-numbers */
+/* eslint-disable comma-dangle */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CardContext from '../context/CardContext';
+import {
+  Attributes,
+  CardForm, CheckSuperTrunfo, Description,
+  DescriptionContainer,
+  Input,
+  InputAtt,
+  InputContainer,
+  InputImg,
+  LabelTitle,
+  NewCard,
+  PlayButton,
+  SaveButton,
+  SelectRarity
+} from './styles/FormStyles';
 
-class Form extends React.Component {
-  render() {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled,
-      onInputChange,
-      onSaveButtonClick } = this.props;
+export default function Form() {
+  const {
+    card,
+    handleCard,
+    isDisabled,
+    saveCard,
+    checkForSuperTrunfo,
+  } = useContext(CardContext);
+  const history = useNavigate();
 
-    const checkTrunfo = hasTrunfo
-      ? 'Você já tem um Super Trunfo em seu baralho' : (
-        <label htmlFor="super">
-          Super Trunfo:
-          <input
-            trunfo={ hasTrunfo }
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            id="super"
-            name="superT"
-            data-testid="trunfo-input"
-            type="checkbox"
-          />
-        </label>
-      );
-
-    return (
-      <form action="" className="form">
-        <label htmlFor="name">
-          Nome:
-          <input
-            value={ cardName }
-            onChange={ onInputChange }
-            id="name"
+  return (
+    <CardForm>
+      <NewCard>
+        Adicionar nova carta
+      </NewCard>
+      <form>
+        <LabelTitle>Nome da carta</LabelTitle>
+        <InputContainer htmlFor="card-name">
+          <Input
+            id="card-name"
+            maxLength="15"
             name="name"
-            data-testid="name-input"
+            value={ card.name }
+            onChange={ handleCard }
             type="text"
           />
-        </label>
-        <label htmlFor="description">
-          Descrição:
-          <textarea
-            value={ cardDescription }
-            onChange={ onInputChange }
-            id="description"
+        </InputContainer>
+        <DescriptionContainer htmlFor="card-description">
+          <LabelTitle>Descrição</LabelTitle>
+          <Description
+            id="card-description"
             name="description"
-            data-testid="description-input"
+            maxLength="96"
+            value={ card.description }
+            onChange={ handleCard }
           />
-        </label>
-        <label htmlFor="attr1">
-          Attr1:
-          <input
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-            id="attr1"
-            name="attr1"
-            data-testid="attr1-input"
+        </DescriptionContainer>
+        <Attributes htmlFor="card-att1">
+          <p>Velocidade</p>
+          <InputAtt
+            id="card-att1"
             type="number"
+            name="velocidade"
+            min="0"
+            value={ card.attributes.velocidade }
+            onChange={ handleCard }
           />
-        </label>
-        <label htmlFor="attr2">
-          Attr2:
-          <input
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-            id="attr2"
-            name="attr2"
-            data-testid="attr2-input"
+        </Attributes>
+
+        <Attributes htmlFor="card-att2">
+          <p>Peso</p>
+          <InputAtt
+            id="card-att2"
             type="number"
+            name="peso"
+            min="0"
+            value={ card.attributes.peso }
+            onChange={ handleCard }
           />
-        </label>
-        <label htmlFor="attr3">
-          Attr3:
-          <input
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-            id="attr3"
-            name="attr3"
-            data-testid="attr3-input"
+        </Attributes>
+
+        <Attributes htmlFor="card-att3">
+          <p>Comprimento</p>
+          <InputAtt
+            id="card-att3"
             type="number"
+            name="comprimento"
+            min="0"
+            value={ card.attributes.comprimento }
+            onChange={ handleCard }
           />
-        </label>
-        <label htmlFor="card">
-          Carta:
-          <input
-            value={ cardImage }
-            onChange={ onInputChange }
-            id="card"
-            name="card"
-            data-testid="image-input"
+        </Attributes>
+        <InputContainer htmlFor="card-image">
+          <LabelTitle>Imagem</LabelTitle>
+          <InputImg
+            id="card-image"
             type="text"
+            name="image"
+            placeholder="Insira URL da imagem"
+            value={ card.image }
+            onChange={ handleCard }
           />
-        </label>
-        <label htmlFor="rarity">
-          Raridade:
-          <select
-            value={ cardRare }
-            onChange={ onInputChange }
-            id="rarity"
+
+        </InputContainer>
+        <label htmlFor="card-rarity">
+          <LabelTitle>Raridade</LabelTitle>
+          <SelectRarity
+            id="card-rarity"
             name="rarity"
-            data-testid="rare-input"
+            onChange={ handleCard }
           >
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
-            <option value="muito raro">Muito raro</option>
-          </select>
+            <option value="muitoRaro">Muito raro</option>
+          </SelectRarity>
         </label>
+        <CheckSuperTrunfo isTrunfo={ checkForSuperTrunfo() } htmlFor="super-trunfo">
+          <input
+            id="super-trunfo"
+            type="checkbox"
+            name="isTrunfo"
+            checked={ card.isTrunfo }
+            onChange={ handleCard }
+          />
+          <span>Super Trunfo</span>
+        </CheckSuperTrunfo>
+        <br />
 
-        {
-          checkTrunfo
-        }
-
-        <button
-          disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
-          id="save"
-          name="save"
+        <SaveButton
+          available={ isDisabled.disabled }
           type="button"
-          data-testid="save-button"
+          disabled={ isDisabled.disabled }
+          onClick={ () => saveCard() }
         >
           Salvar
 
-        </button>
+        </SaveButton>
+        <PlayButton
+          type="button"
+          onClick={ () => history('/gameplay') }
+        >
+          Jogar
+        </PlayButton>
       </form>
-    );
-  }
+    </CardForm>
+  );
 }
-
-Form.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
-};
-
-export default Form;
