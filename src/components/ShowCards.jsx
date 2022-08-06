@@ -89,7 +89,9 @@ ShowCards.propTypes = {
   att1: propTypes.number.isRequired,
   att2: propTypes.number.isRequired,
   att3: propTypes.number.isRequired,
-  rarity: propTypes.string.isRequired,
+  rarity: propTypes.objectOf(propTypes.string).isRequired,
   superTrunfo: propTypes.bool.isRequired,
-  license: propTypes.string.isRequired,
+  licenseName: propTypes.string.isRequired,
+  author: propTypes.string.isRequired,
+  link: propTypes.string.isRequired,
 };
