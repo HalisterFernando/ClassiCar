@@ -1,6 +1,6 @@
 # ClassiCar :blue_car:
 
-Este projeto foi realizado no módulo de **Front-end** da [Trybe](https://www.betrybe.com/?utm_source=trybe.com.br) utilizando o framework **React**. :rocket:
+Este projeto foi realizado no módulo de **Front-end** da [Trybe](https://www.betrybe.com/?utm_source=trybe.com.br) utilizando **React**. :rocket:
 
 
 ## Descrição :mag_right:
