@@ -38,8 +38,10 @@ export const RulesInnerContainer = styled.div`
     justify-items: center;
     z-index: 201;
     position: fixed;
-    top: ${(props) => (props.rule ? '5px' : '50px')};
-    left: ${(props) => (props.rule ? '0' : '23px')};    
+    width: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);       
     background-color: #065653;
     text-align: center;
     padding: 5px 25px;
