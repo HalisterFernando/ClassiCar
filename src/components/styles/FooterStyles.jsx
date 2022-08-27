@@ -5,8 +5,11 @@ export const FooterContainer = styled.footer`
     justify-content: space-around;
     align-items: center;
     background-color: #065653;
-    border-top: 15px double white;
-    margin-top: 20px;
+    border-top: 15px double white;   
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
 
     div {
         display: flex;

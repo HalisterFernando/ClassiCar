@@ -39,12 +39,12 @@ export default function App() {
         exatc
         path="/gameplay"
         element={
-          <>
+          <Container>
             <Rules />
             <Header />
             <Gameplay />
             <Footer />
-          </>
+          </Container>
         }
       />
     </Routes>

@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-export const MainContainer = styled.div`
+export const GameMainContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
     padding-right: 20px;
+    padding-bottom: 200px;
+    min-height: 100vh;
 `;
 
 export const GameContainer = styled.div`

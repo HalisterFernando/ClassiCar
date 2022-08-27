@@ -2,13 +2,20 @@ import React, { useContext, useEffect, useState } from 'react';
 import CardContext from '../context/CardContext';
 import GameContext from '../context/GameContext';
 import Question from '../images/questionMark.png';
+import Footer from './Footer';
 import ShowCards from './ShowCards';
 import {
-  Continue, CpuCard, GameContainer,
-  MainContainer, NextCard, PlayAgain,
+  Continue,
+  CpuCard,
+  GameContainer,
+  GameMainContainer,
+  NextCard,
+  PlayAgain,
   QuestionCard,
-  // eslint-disable-next-line comma-dangle
-  Result, Score, Select, Setup
+  Result,
+  Score,
+  Select,
+  Setup,
 } from './styles/GameplayStyles';
 
 const INDEXLIMIT = 9;
@@ -117,7 +124,7 @@ export default function Gameplay() {
   }, [game.playAgain]);
 
   return (
-    <MainContainer>
+    <GameMainContainer>
       <Setup>
         <Select htmlFor="select-att" next={ game.next } endGame={ game.endGame }>
           <select id="select-att" onChange={ handleAtt }>
@@ -185,6 +192,7 @@ export default function Gameplay() {
           {nextStep()}
         </CpuCard>
       </GameContainer>
-    </MainContainer>
+
+    </GameMainContainer>
   );
 }

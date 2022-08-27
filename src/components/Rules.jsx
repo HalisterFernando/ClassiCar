@@ -25,14 +25,16 @@ export default function Rules() {
             <div>
               <h2>Selecione um atributo</h2>
               <p>
-                Selecione um atributo entre Peso, Velocidade ou Comprimento
+                Selecione um atributo entre Peso, Velocidade ou Comprimento,
                 o atributo Super Trunfo estará disponível somente em sua respecitiva carta
               </p>
               <h2>Avançar</h2>
               <p>
                 Ao clicar em avançar, ganha 1 ponto quem tiver
                 o valor maior dentre o atributo escolhido, caso sejam iguais,
-                ninguém ganha ponto
+                ninguém ganha ponto, no caso de Super Trunfo, ganha 1 ponto
+                caso a carta do oponente seja normal ou rara, caso seja muito rara
+                ninguém ganha ponto.
               </p>
               <h2>Jogando Novamente</h2>
               <p>

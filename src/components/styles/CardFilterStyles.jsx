@@ -54,6 +54,7 @@ export const DisplayCards = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 15px;
+    padding-bottom: 200px;
 `;
 
 export const DeleteButton = styled.button`
