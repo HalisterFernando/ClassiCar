@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import CardContext from '../context/CardContext';
 import GameContext from '../context/GameContext';
 import Question from '../images/questionMark.png';
-import Footer from './Footer';
 import ShowCards from './ShowCards';
 import {
   Continue,
