@@ -1,15 +1,18 @@
-/* eslint-disable no-magic-numbers */
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import Cars from '../cars';
-import CardContext from './CardContext';
+import { createContext } from 'react';
+
+export const CardContext = createContext();
+const ZERO = 0;
+const MAX_VALUE = 9999;
 
 export default function CardProvider(props) {
   const [rule, setRule] = useState(true);
   const [card, setCard] = useState({
     name: '',
     description: '',
-    attributes: { velocidade: 0, peso: 0, comprimento: 0 },
+    attributes: { velocidade: ZERO, peso: ZERO, comprimento: ZERO },
     image: '',
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -28,7 +31,7 @@ export default function CardProvider(props) {
         ...card,
         attributes: {
           ...card.attributes,
-          [name]: value > 9999 ? 9999 : value,
+          [name]: value > MAX_VALUE ? MAX_VALUE : value,
         },
       });
     }
@@ -48,14 +51,15 @@ export default function CardProvider(props) {
   const validation = () => {
     const { velocidade, peso, comprimento } = card.attributes;
     const inputValues = [card.name, card.description, card.image]
-      .every((value) => value.length > 0);
+      .every((value) => value.length > ZERO);
     const attributeValues = [Number(velocidade), Number(peso), Number(comprimento)]
-      .every((att) => att >= 0);
+      .every((att) => att >= ZERO);
     if (inputValues && attributeValues) {
       setIsDisabled({ disabled: false });
     } else {
       setIsDisabled({ disabled: true });
     }
+    return;
   };
 
   const saveCard = () => {
@@ -72,7 +76,7 @@ export default function CardProvider(props) {
     setCard({
       name: '',
       description: '',
-      attributes: { velocidade: 0, peso: 0, comprimento: 0 },
+      attributes: { velocidade: ZERO, peso: ZERO, comprimento: ZERO },
       image: '',
       rarity: { normal: true, raro: false, muitoRaro: false },
       isTrunfo: false,
@@ -84,7 +88,7 @@ export default function CardProvider(props) {
     .some(({ isTrunfo }) => isTrunfo);
 
   const removeCard = (name) => {
-    setSavedCards(savedCards.filter((el) => el.name !== name));
+    setSavedCards(savedCards.filter((card) => card.name !== name));
   };
 
   const handleFilter = ({ target: { name, value, checked } }) => {
@@ -93,10 +97,9 @@ export default function CardProvider(props) {
 
   useEffect(() => validation(), [card]);
 
-  useEffect(() => savedCards.length === 0 && setSavedCards(Cars), []);
+  useEffect(() => savedCards.length === ZERO && setSavedCards(Cars), []);
 
-  useEffect(() => {
-    console.log('Olá', savedCards);
+  useEffect(() => {    
     localStorage.setItem('cards', JSON.stringify(savedCards));
   }, [savedCards]);
 

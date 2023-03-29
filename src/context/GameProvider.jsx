@@ -1,9 +1,11 @@
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
+import { createContext } from 'react';
 
-import GameContext from './GameContext';
+export const GameContext = createContext();
 
-const INDEXLIMIT = 9;
+const INDEX_LIMIT = 9;
+const ZERO = 0;
 const TEN = 10;
 const TWENTY = 20;
 
@@ -13,30 +15,33 @@ export default function GameProvider(props) {
     playerHand: [],
     cpuHand: [],
     next: false,
-    index: 0,
+    index: ZERO,
     selectedAtt: '',
-    playerScore: 0,
-    cpuScore: 0,
-    round: 0,
+    playerScore: ZERO,
+    cpuScore: ZERO,
+    round: ZERO,
     endGame: false,
     playAgain: false,
   });
 
-  const setCards = (shuffle) => {
+  const setCards = (cards) => {
     const playerHand = [];
     const cpuHand = [];
-    if (shuffle.length !== 0) {
-      for (let i = 0; i < TEN; i += 1) {
-        playerHand.push(shuffle[i]);
+
+    if (cards.length) {
+      for (let i = ZERO; i < TEN; i += 1) {
+        playerHand.push(cards[i]);
       }
       for (let i = TEN; i < TWENTY; i += 1) {
-        cpuHand.push(shuffle[i]);
-      }
+        cpuHand.push(cards[i]);
+      }      
       setGame({ ...game, playerHand, cpuHand });
     }
+
+    return;
   };
 
-  const resetIndex = () => game.index > INDEXLIMIT && setGame({ ...game, index: 0 });
+  const resetIndex = () => game.index > INDEX_LIMIT && setGame({ ...game, index: ZERO });
 
   const finishGame = () => game.round === TEN && setGame({ ...game, endGame: true });
 
@@ -46,14 +51,21 @@ export default function GameProvider(props) {
 
   const gameResult = () => {
     let result = 'Empate!';
-    if (game.playerHand.length !== 0
-          && game.cpuHand.length !== 0 && game.index <= INDEXLIMIT) {
+
+    const areHandsLenghtValid = game.playerHand.length > ZERO && game.cpuHand.length > ZERO;
+    const isGameIndexValid = game.index <= INDEX_LIMIT;
+
+    if (areHandsLenghtValid && isGameIndexValid) {
       const { attributes: playerAtts } = game.playerHand[game.index];
       const { attributes: cpuAtts } = game.cpuHand[game.index];
-      if (playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt]
-            || playerAtts[game.selectedAtt] === 'super trunfo') {
+
+      const arePlayerAttsGreaterThan = playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt];
+      const arePlayerAttsLesserThan = playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt];
+      const isSuperTrunfo = player[game.selectedAtt] === 'super trunfo';
+
+      if (arePlayerAttsGreaterThan || isSuperTrunfo) {
         result = 'Boa!';
-      } else if (playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt]) {
+      } else if (arePlayerAttsLesserThan) {
         result = 'Deu ruim!';
       }
     }
@@ -73,40 +85,37 @@ export default function GameProvider(props) {
   };
 
   const setScore = () => {
-    if (game.next) {
-      const result = gameResult();
-      switch (result) {
-      case 'Boa!':
-        return setGame(
-          { ...game,
-            round: game.round + 1,
-            playerScore: game.playerScore + 1,
-          },
-        );
-      case 'Deu ruim!':
-        return setGame(
-          { ...game,
-            round: game.round + 1,
-            cpuScore: game.cpuScore + 1,
-          },
-        );
-      default:
-        return setGame({ ...game, round: game.round + 1 });
-      }
-    }
+    const result = gameResult();
+
+    const resultsObj = {
+      'Boa!': setGame(
+        { ...game,
+          round: game.round + 1,
+          playerScore: game.playerScore + 1,
+        },
+      ),
+      'Deu ruim!': setGame(
+        { ...game,
+          round: game.round + 1,
+          cpuScore: game.cpuScore + 1,
+        },
+      ),
+      'Empate!': setGame({ ...game, round: game.round + 1 })
+    }   
+
+    return game.next && resultsObj[result];
   };
 
-  const playAgain = () => {
-    console.log('PlayAgain');
+  const playAgain = () => {    
     setGame({
       playerHand: [],
       cpuHand: [],
       next: false,
-      index: 0,
+      index: ZERO,
       selectedAtt: game.selectedAtt,
-      playerScore: 0,
-      cpuScore: 0,
-      round: 0,
+      playerScore: ZERO,
+      cpuScore: ZERO,
+      round: ZERO,
       endGame: false,
       playAgain: false,
     });
