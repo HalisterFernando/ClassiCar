@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CardContext from '../context/CardContext';
+import { CardContext } from '../context/CardProvider';
 import {
   Attributes,
   CardForm, CheckSuperTrunfo, Description,

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import CardContext from '../context/CardContext';
-import GameContext from '../context/GameContext';
+import { CardContext } from '../context/CardProvider';
+import { GameContext } from '../context/GameProvider';
 import Question from '../images/questionMark.png';
 import ShowCards from './ShowCards';
 import {
