@@ -50,16 +50,15 @@ export default function CardProvider(props) {
 
   const validation = () => {
     const { velocidade, peso, comprimento } = card.attributes;
-    const inputValues = [card.name, card.description, card.image]
+   
+    const areInputValuesValid = [card.name, card.description, card.image]
       .every((value) => value.length > ZERO);
-    const attributeValues = [Number(velocidade), Number(peso), Number(comprimento)]
+    const areAtrributeValuesValid = [Number(velocidade), Number(peso), Number(comprimento)]
       .every((att) => att >= ZERO);
-    if (inputValues && attributeValues) {
-      setIsDisabled({ disabled: false });
-    } else {
-      setIsDisabled({ disabled: true });
-    }
-    return;
+    
+    if (areInputValuesValid && areAtrributeValuesValid) return setIsDisabled({ disabled: false });
+        
+    return setIsDisabled({ disabled: true });
   };
 
   const saveCard = () => {
