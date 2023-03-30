@@ -1,7 +1,6 @@
 import propTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import Cars from '../cars';
-import { createContext } from 'react';
 
 export const CardContext = createContext();
 const MAX_VALUE = 9999;
@@ -49,13 +48,18 @@ export default function CardProvider(props) {
 
   const validation = () => {
     const { velocidade, peso, comprimento } = card.attributes;
-   
-    const areInputValuesValid = [card.name, card.description, card.image]
-      .every((value) => value.length > 0);
-    const areAtrributeValuesValid = [Number(velocidade), Number(peso), Number(comprimento)]
-      .every((att) => att >= 0);
-    
-    if (areInputValuesValid && areAtrributeValuesValid) return setIsDisabled({ disabled: false });
+
+    const areInputValuesValid = [
+      card.name, card.description, card.image,
+    ].every((value) => value.length > 0);
+
+    const areAtrributeValuesValid = [
+      Number(velocidade), Number(peso), Number(comprimento),
+    ].every((att) => att >= 0);
+
+    if (areInputValuesValid && areAtrributeValuesValid) {
+      return setIsDisabled({ disabled: false });
+    }
 
     return setIsDisabled({ disabled: true });
   };
@@ -97,7 +101,7 @@ export default function CardProvider(props) {
 
   useEffect(() => savedCards.length === 0 && setSavedCards(Cars), []);
 
-  useEffect(() => {    
+  useEffect(() => {
     localStorage.setItem('cards', JSON.stringify(savedCards));
   }, [savedCards]);
 

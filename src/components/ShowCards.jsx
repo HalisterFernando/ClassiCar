@@ -9,7 +9,7 @@ import {
   Description,
   ImageFrame,
   InnerFrame,
-  License
+  License,
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
@@ -26,7 +26,7 @@ export default function ShowCards(props) {
     licenseName,
     author,
     link,
-   } = props;
+  } = props;
 
   return (
     <CardFrame>
@@ -79,7 +79,7 @@ export default function ShowCards(props) {
 
 ShowCards.propTypes = {
   name: propTypes.string.isRequired,
-  description: propTypes.string,
+  description: propTypes.string.isRequired,
   image: propTypes.string.isRequired,
   att1: propTypes.number.isRequired,
   att2: propTypes.number.isRequired,

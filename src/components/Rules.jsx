@@ -7,7 +7,7 @@ import { OkBtn, RulesContainer, RulesInnerContainer } from './styles/RulesStyles
 export default function Rules() {
   const { rule, setRule } = useContext(CardContext);
   const { gameRule, setGameRule } = useContext(GameContext);
-  
+
   const renderRules = () => {
     const regex = /gameplay/gi;
     const url = window.location.href;

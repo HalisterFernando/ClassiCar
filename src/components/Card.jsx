@@ -1,6 +1,7 @@
-import { useContext } from 'react';
-import { CardContext } from '../context/CardProvider'
+import React, { useContext } from 'react';
+import { CardContext } from '../context/CardProvider';
 import Example from '../images/example.jpg';
+import Attribute from './Attribute';
 import {
   AttributeName,
   Attributes,
@@ -10,13 +11,13 @@ import {
   CardRarity,
   Description,
   ImageFrame,
-  InnerFrame
+  InnerFrame,
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
 export default function Card() {
-  const  { card }  = useContext(CardContext);
-  
+  const { card } = useContext(CardContext);
+
   return (
     <CardFrame>
       <InnerFrame>
@@ -34,10 +35,7 @@ export default function Card() {
         <CardAttributes>
           <Attributes>
             <AttributeName>Velocidade</AttributeName>
-            <AttributeValue>
-              {`${card.attributes.velocidade}`}
-              <span>Km/h</span>
-            </AttributeValue>
+            <Attribute attribute="velocidade" value={ card.attributes.velocidade } />
           </Attributes>
           <Attributes>
             <AttributeName>Peso</AttributeName>

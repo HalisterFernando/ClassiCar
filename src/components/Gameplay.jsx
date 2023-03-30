@@ -23,57 +23,55 @@ const VALUE = 0.5;
 export default function Gameplay() {
   const { savedCards } = useContext(CardContext);
   const [shuffle, setShuffle] = useState([]);
-  const { 
-    game, 
-    playAgain, 
+  const {
+    game,
+    playAgain,
     setCards,
-    handleAtt, 
-    gameResult, 
+    handleAtt,
+    gameResult,
     finishGame,
-    resetIndex, 
-    setScore, 
+    resetIndex,
+    setScore,
     nextRound,
-    nextCard, 
+    nextCard,
     newGame } = useContext(GameContext);
 
-  const shuffleCards = () => {    
+  const shuffleCards = () => {
     setShuffle(() => savedCards.sort(() => Math.random() - VALUE));
   };
 
   const enableSuperTrunfo = () => {
     if (game.playerHand.length > 0) {
       const { playerHand, index } = game;
-      
+
       if (playerHand[index].isTrunfo) {
         return false;
-      } 
+      }
       return true;
     }
-    return;
   };
 
   const roundOver = () => {
     if (game.endGame) {
       if (game.playerScore < game.cpuScore) {
         return 'Você perdeu!';
-      }      
+      }
       if (game.playerScore === game.cpuScore) {
         return 'Empatou!';
       }
       return 'Você ganhou!';
     }
-    return;
   };
 
   const gameRender = () => {
     if (game.playerHand.length !== 0 && game.index <= INDEXLIMIT) {
       const {
-        name, 
-        description, 
+        name,
+        description,
         attributes,
-        image, 
-        rarity, 
-        isTrunfo, 
+        image,
+        rarity,
+        isTrunfo,
         license } = game.playerHand[game.index];
       return (
         <ShowCards
@@ -96,12 +94,12 @@ export default function Gameplay() {
   const nextStep = () => {
     if (game.cpuHand.length !== 0 && game.next) {
       const {
-        name, 
-        description, 
+        name,
+        description,
         attributes,
-        image, 
-        rarity, 
-        isTrunfo, 
+        image,
+        rarity,
+        isTrunfo,
         license } = game.cpuHand[game.index];
 
       return (
@@ -124,7 +122,7 @@ export default function Gameplay() {
 
   useEffect(() => {
     if (game.playAgain) return shuffleCards();
-    shuffleCards();    
+    shuffleCards();
   }, [game.playAgain]);
 
   useEffect(() => finishGame(), [game.round]);

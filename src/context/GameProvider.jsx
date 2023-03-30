@@ -1,10 +1,9 @@
 import propTypes from 'prop-types';
-import React, { useState } from 'react';
-import { createContext } from 'react';
+import React, { useState, createContext } from 'react';
 
 export const GameContext = createContext();
 
-const INDEX_LIMIT = 9; 
+const INDEX_LIMIT = 9;
 const TEN = 10;
 const TWENTY = 20;
 
@@ -33,11 +32,9 @@ export default function GameProvider(props) {
       }
       for (let i = TEN; i < TWENTY; i += 1) {
         cpuHand.push(cards[i]);
-      }      
+      }
       return setGame({ ...game, playerHand, cpuHand });
     }
-
-    return;
   };
 
   const resetIndex = () => game.index > INDEX_LIMIT && setGame({ ...game, index: 0 });
@@ -58,15 +55,15 @@ export default function GameProvider(props) {
       const { attributes: playerAtts } = game.playerHand[game.index];
       const { attributes: cpuAtts } = game.cpuHand[game.index];
 
-      const arePlayerAttsGreaterThan = playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt];
-      const arePlayerAttsLesserThan = playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt];
+      const arePlayerAttsGT = playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt];
+      const arePlayerAttsLT = playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt];
       const isSuperTrunfo = playerAtts[game.selectedAtt] === 'super trunfo';
 
-      if (arePlayerAttsGreaterThan || isSuperTrunfo) {
+      if (arePlayerAttsGT || isSuperTrunfo) {
         result = 'Boa!';
       }
-      
-      if (arePlayerAttsLesserThan) {
+
+      if (arePlayerAttsLT) {
         result = 'Deu ruim!';
       }
     }
@@ -88,7 +85,7 @@ export default function GameProvider(props) {
   const setScore = () => {
     if (game.next) {
       const result = gameResult();
-     
+
       switch (result) {
       case 'Boa!':
         return setGame(
@@ -108,11 +105,9 @@ export default function GameProvider(props) {
         return setGame({ ...game, round: game.round + 1 });
       }
     }
-
-    return;
   };
 
-  const playAgain = () => {    
+  const playAgain = () => {
     setGame({
       playerHand: [],
       cpuHand: [],

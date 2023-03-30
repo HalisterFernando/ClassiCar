@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
 import ShowCards from './ShowCards';
 import {
-  DeleteButton, 
-  DisplayCards,  
-  FilterContainer, 
-  Options, 
-  Search, 
-  SearchLabel
+  DeleteButton,
+  DisplayCards,
+  FilterContainer,
+  Options,
+  Search,
+  SearchLabel,
 } from './styles/CardFilterStyles';
 
 export default function CardFilter() {
@@ -15,7 +15,7 @@ export default function CardFilter() {
 
   const renderCards = () => {
     let cardsToRender = [...savedCards];
-    
+
     if (filter.search) {
       cardsToRender = cardsToRender.filter(({ name }) => name.includes(filter.search));
     }
@@ -27,7 +27,7 @@ export default function CardFilter() {
     }
 
     return cardsToRender.length > 0 && cardsToRender.map((card) => (
-      <div key={ card.name }>        
+      <div key={ card.name }>
         <ShowCards
           name={ card.name }
           image={ card.image }
