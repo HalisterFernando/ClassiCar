@@ -1,8 +1,5 @@
-/* eslint-disable react/jsx-max-depth */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable comma-dangle */
 import { useContext } from 'react';
-import CardContext from '../context/CardContext';
+import { CardContext } from '../context/CardProvider'
 import Example from '../images/example.jpg';
 import {
   AttributeName,
@@ -18,8 +15,8 @@ import {
 import SuperTrunfo from './SuperTrunfo';
 
 export default function Card() {
-  const { card } = useContext(CardContext);
-
+  const  { card }  = useContext(CardContext);
+  
   return (
     <CardFrame>
       <InnerFrame>

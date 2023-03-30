@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-max-depth */
-/* eslint-disable indent */
-/* eslint-disable comma-dangle */
 import propTypes from 'prop-types';
 import React from 'react';
 import {
@@ -52,7 +49,6 @@ export default function ShowCards(props) {
               {`${att1}`}
               <span>Km/h</span>
             </AttributeValue>
-
           </Attributes>
           <Attributes>
             <AttributeName>Peso</AttributeName>
@@ -60,7 +56,6 @@ export default function ShowCards(props) {
               {`${att2}`}
               <span>Kg</span>
             </AttributeValue>
-
           </Attributes>
           <Attributes>
             <AttributeName>Comprimento</AttributeName>
@@ -68,7 +63,6 @@ export default function ShowCards(props) {
               {`${att3}`}
               <span>Mts</span>
             </AttributeValue>
-
           </Attributes>
         </CardAttributes>
       </InnerFrame>
@@ -85,12 +79,12 @@ export default function ShowCards(props) {
 
 ShowCards.propTypes = {
   name: propTypes.string.isRequired,
-  description: propTypes.string.isRequired,
+  description: propTypes.string,
   image: propTypes.string.isRequired,
   att1: propTypes.number.isRequired,
   att2: propTypes.number.isRequired,
   att3: propTypes.number.isRequired,
-  rarity: propTypes.objectOf(propTypes.string).isRequired,
+  rarity: propTypes.objectOf(propTypes.bool).isRequired,
   superTrunfo: propTypes.bool.isRequired,
   licenseName: propTypes.string.isRequired,
   author: propTypes.string.isRequired,

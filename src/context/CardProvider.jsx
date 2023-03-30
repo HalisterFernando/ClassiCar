@@ -1,8 +1,10 @@
-/* eslint-disable no-magic-numbers */
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import Cars from '../cars';
-import CardContext from './CardContext';
+import { createContext } from 'react';
+
+export const CardContext = createContext();
+const MAX_VALUE = 9999;
 
 export default function CardProvider(props) {
   const [rule, setRule] = useState(true);
@@ -28,7 +30,7 @@ export default function CardProvider(props) {
         ...card,
         attributes: {
           ...card.attributes,
-          [name]: value > 9999 ? 9999 : value,
+          [name]: value > MAX_VALUE ? MAX_VALUE : value,
         },
       });
     }
@@ -47,15 +49,15 @@ export default function CardProvider(props) {
 
   const validation = () => {
     const { velocidade, peso, comprimento } = card.attributes;
-    const inputValues = [card.name, card.description, card.image]
+   
+    const areInputValuesValid = [card.name, card.description, card.image]
       .every((value) => value.length > 0);
-    const attributeValues = [Number(velocidade), Number(peso), Number(comprimento)]
+    const areAtrributeValuesValid = [Number(velocidade), Number(peso), Number(comprimento)]
       .every((att) => att >= 0);
-    if (inputValues && attributeValues) {
-      setIsDisabled({ disabled: false });
-    } else {
-      setIsDisabled({ disabled: true });
-    }
+    
+    if (areInputValuesValid && areAtrributeValuesValid) return setIsDisabled({ disabled: false });
+
+    return setIsDisabled({ disabled: true });
   };
 
   const saveCard = () => {
@@ -84,7 +86,7 @@ export default function CardProvider(props) {
     .some(({ isTrunfo }) => isTrunfo);
 
   const removeCard = (name) => {
-    setSavedCards(savedCards.filter((el) => el.name !== name));
+    setSavedCards(savedCards.filter((card) => card.name !== name));
   };
 
   const handleFilter = ({ target: { name, value, checked } }) => {
@@ -95,8 +97,7 @@ export default function CardProvider(props) {
 
   useEffect(() => savedCards.length === 0 && setSavedCards(Cars), []);
 
-  useEffect(() => {
-    console.log('Olá', savedCards);
+  useEffect(() => {    
     localStorage.setItem('cards', JSON.stringify(savedCards));
   }, [savedCards]);
 

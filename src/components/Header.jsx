@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import CardContext from '../context/CardContext';
-import GameContext from '../context/GameContext';
+import { CardContext } from '../context/CardProvider';
+import { GameContext } from '../context/GameProvider';
 import HeaderContainer from './styles/HeaderStyles';
 
 export default function Header() {

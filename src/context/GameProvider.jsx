@@ -1,9 +1,10 @@
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
+import { createContext } from 'react';
 
-import GameContext from './GameContext';
+export const GameContext = createContext();
 
-const INDEXLIMIT = 9;
+const INDEX_LIMIT = 9; 
 const TEN = 10;
 const TWENTY = 20;
 
@@ -22,21 +23,24 @@ export default function GameProvider(props) {
     playAgain: false,
   });
 
-  const setCards = (shuffle) => {
+  const setCards = (cards) => {
     const playerHand = [];
     const cpuHand = [];
-    if (shuffle.length !== 0) {
+
+    if (cards.length) {
       for (let i = 0; i < TEN; i += 1) {
-        playerHand.push(shuffle[i]);
+        playerHand.push(cards[i]);
       }
       for (let i = TEN; i < TWENTY; i += 1) {
-        cpuHand.push(shuffle[i]);
-      }
-      setGame({ ...game, playerHand, cpuHand });
+        cpuHand.push(cards[i]);
+      }      
+      return setGame({ ...game, playerHand, cpuHand });
     }
+
+    return;
   };
 
-  const resetIndex = () => game.index > INDEXLIMIT && setGame({ ...game, index: 0 });
+  const resetIndex = () => game.index > INDEX_LIMIT && setGame({ ...game, index: 0 });
 
   const finishGame = () => game.round === TEN && setGame({ ...game, endGame: true });
 
@@ -46,14 +50,23 @@ export default function GameProvider(props) {
 
   const gameResult = () => {
     let result = 'Empate!';
-    if (game.playerHand.length !== 0
-          && game.cpuHand.length !== 0 && game.index <= INDEXLIMIT) {
+
+    const areHandsLenghtValid = game.playerHand.length > 0 && game.cpuHand.length > 0;
+    const isGameIndexValid = game.index <= INDEX_LIMIT;
+
+    if (areHandsLenghtValid && isGameIndexValid) {
       const { attributes: playerAtts } = game.playerHand[game.index];
       const { attributes: cpuAtts } = game.cpuHand[game.index];
-      if (playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt]
-            || playerAtts[game.selectedAtt] === 'super trunfo') {
+
+      const arePlayerAttsGreaterThan = playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt];
+      const arePlayerAttsLesserThan = playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt];
+      const isSuperTrunfo = playerAtts[game.selectedAtt] === 'super trunfo';
+
+      if (arePlayerAttsGreaterThan || isSuperTrunfo) {
         result = 'Boa!';
-      } else if (playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt]) {
+      }
+      
+      if (arePlayerAttsLesserThan) {
         result = 'Deu ruim!';
       }
     }
@@ -75,6 +88,7 @@ export default function GameProvider(props) {
   const setScore = () => {
     if (game.next) {
       const result = gameResult();
+     
       switch (result) {
       case 'Boa!':
         return setGame(
@@ -94,10 +108,11 @@ export default function GameProvider(props) {
         return setGame({ ...game, round: game.round + 1 });
       }
     }
+
+    return;
   };
 
-  const playAgain = () => {
-    console.log('PlayAgain');
+  const playAgain = () => {    
     setGame({
       playerHand: [],
       cpuHand: [],
