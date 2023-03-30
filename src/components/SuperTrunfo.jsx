@@ -18,5 +18,5 @@ export default function SuperTrunfo(props) {
 }
 
 SuperTrunfo.propTypes = {
-  savedSuperTrunfo: propTypes.bool.isRequired,
+  savedSuperTrunfo: propTypes.bool,
 };

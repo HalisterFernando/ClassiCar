@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-max-depth */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable comma-dangle */
 import { useContext } from 'react';
 import { CardContext } from '../context/CardProvider'
 import Example from '../images/example.jpg';

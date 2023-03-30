@@ -4,7 +4,6 @@ import Cars from '../cars';
 import { createContext } from 'react';
 
 export const CardContext = createContext();
-const ZERO = 0;
 const MAX_VALUE = 9999;
 
 export default function CardProvider(props) {
@@ -12,7 +11,7 @@ export default function CardProvider(props) {
   const [card, setCard] = useState({
     name: '',
     description: '',
-    attributes: { velocidade: ZERO, peso: ZERO, comprimento: ZERO },
+    attributes: { velocidade: 0, peso: 0, comprimento: 0 },
     image: '',
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -52,12 +51,12 @@ export default function CardProvider(props) {
     const { velocidade, peso, comprimento } = card.attributes;
    
     const areInputValuesValid = [card.name, card.description, card.image]
-      .every((value) => value.length > ZERO);
+      .every((value) => value.length > 0);
     const areAtrributeValuesValid = [Number(velocidade), Number(peso), Number(comprimento)]
-      .every((att) => att >= ZERO);
+      .every((att) => att >= 0);
     
     if (areInputValuesValid && areAtrributeValuesValid) return setIsDisabled({ disabled: false });
-        
+
     return setIsDisabled({ disabled: true });
   };
 
@@ -75,7 +74,7 @@ export default function CardProvider(props) {
     setCard({
       name: '',
       description: '',
-      attributes: { velocidade: ZERO, peso: ZERO, comprimento: ZERO },
+      attributes: { velocidade: 0, peso: 0, comprimento: 0 },
       image: '',
       rarity: { normal: true, raro: false, muitoRaro: false },
       isTrunfo: false,
@@ -96,7 +95,7 @@ export default function CardProvider(props) {
 
   useEffect(() => validation(), [card]);
 
-  useEffect(() => savedCards.length === ZERO && setSavedCards(Cars), []);
+  useEffect(() => savedCards.length === 0 && setSavedCards(Cars), []);
 
   useEffect(() => {    
     localStorage.setItem('cards', JSON.stringify(savedCards));

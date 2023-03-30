@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
 import ShowCards from './ShowCards';
 import {
-  DeleteButton, DisplayCards,
-  // eslint-disable-next-line comma-dangle
-  FilterContainer, Options, Search, SearchLabel
+  DeleteButton, 
+  DisplayCards,  
+  FilterContainer, 
+  Options, 
+  Search, 
+  SearchLabel
 } from './styles/CardFilterStyles';
 
 export default function CardFilter() {
@@ -12,6 +15,7 @@ export default function CardFilter() {
 
   const renderCards = () => {
     let cardsToRender = [...savedCards];
+    
     if (filter.search) {
       cardsToRender = cardsToRender.filter(({ name }) => name.includes(filter.search));
     }

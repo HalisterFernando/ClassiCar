@@ -23,40 +23,58 @@ const VALUE = 0.5;
 export default function Gameplay() {
   const { savedCards } = useContext(CardContext);
   const [shuffle, setShuffle] = useState([]);
-  const { game, playAgain, setCards,
-    handleAtt, gameResult, finishGame,
-    resetIndex, setScore, nextRound,
-    nextCard, newGame } = useContext(GameContext);
+  const { 
+    game, 
+    playAgain, 
+    setCards,
+    handleAtt, 
+    gameResult, 
+    finishGame,
+    resetIndex, 
+    setScore, 
+    nextRound,
+    nextCard, 
+    newGame } = useContext(GameContext);
 
-  const shuffleCards = () => {
+  const shuffleCards = () => {    
     setShuffle(() => savedCards.sort(() => Math.random() - VALUE));
   };
 
   const enableSuperTrunfo = () => {
     if (game.playerHand.length > 0) {
       const { playerHand, index } = game;
+      
       if (playerHand[index].isTrunfo) {
         return false;
-      } return true;
+      } 
+      return true;
     }
+    return;
   };
 
   const roundOver = () => {
     if (game.endGame) {
       if (game.playerScore < game.cpuScore) {
         return 'Você perdeu!';
-      } if (game.playerScore === game.cpuScore) {
+      }      
+      if (game.playerScore === game.cpuScore) {
         return 'Empatou!';
       }
       return 'Você ganhou!';
     }
+    return;
   };
 
   const gameRender = () => {
     if (game.playerHand.length !== 0 && game.index <= INDEXLIMIT) {
       const {
-        name, description, attributes,
-        image, rarity, isTrunfo, license } = game.playerHand[game.index];
+        name, 
+        description, 
+        attributes,
+        image, 
+        rarity, 
+        isTrunfo, 
+        license } = game.playerHand[game.index];
       return (
         <ShowCards
           name={ name }
@@ -78,9 +96,13 @@ export default function Gameplay() {
   const nextStep = () => {
     if (game.cpuHand.length !== 0 && game.next) {
       const {
-        name, description, attributes,
-        image, rarity, isTrunfo, license,
-      } = game.cpuHand[game.index];
+        name, 
+        description, 
+        attributes,
+        image, 
+        rarity, 
+        isTrunfo, 
+        license } = game.cpuHand[game.index];
 
       return (
         <ShowCards
@@ -102,7 +124,7 @@ export default function Gameplay() {
 
   useEffect(() => {
     if (game.playAgain) return shuffleCards();
-    shuffleCards();
+    shuffleCards();    
   }, [game.playAgain]);
 
   useEffect(() => finishGame(), [game.round]);
@@ -191,7 +213,6 @@ export default function Gameplay() {
           {nextStep()}
         </CpuCard>
       </GameContainer>
-
     </GameMainContainer>
   );
 }

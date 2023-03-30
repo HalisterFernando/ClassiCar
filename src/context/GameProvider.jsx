@@ -4,8 +4,7 @@ import { createContext } from 'react';
 
 export const GameContext = createContext();
 
-const INDEX_LIMIT = 9;
-const ZERO = 0;
+const INDEX_LIMIT = 9; 
 const TEN = 10;
 const TWENTY = 20;
 
@@ -15,11 +14,11 @@ export default function GameProvider(props) {
     playerHand: [],
     cpuHand: [],
     next: false,
-    index: ZERO,
+    index: 0,
     selectedAtt: '',
-    playerScore: ZERO,
-    cpuScore: ZERO,
-    round: ZERO,
+    playerScore: 0,
+    cpuScore: 0,
+    round: 0,
     endGame: false,
     playAgain: false,
   });
@@ -29,19 +28,19 @@ export default function GameProvider(props) {
     const cpuHand = [];
 
     if (cards.length) {
-      for (let i = ZERO; i < TEN; i += 1) {
+      for (let i = 0; i < TEN; i += 1) {
         playerHand.push(cards[i]);
       }
       for (let i = TEN; i < TWENTY; i += 1) {
         cpuHand.push(cards[i]);
       }      
-      setGame({ ...game, playerHand, cpuHand });
+      return setGame({ ...game, playerHand, cpuHand });
     }
 
     return;
   };
 
-  const resetIndex = () => game.index > INDEX_LIMIT && setGame({ ...game, index: ZERO });
+  const resetIndex = () => game.index > INDEX_LIMIT && setGame({ ...game, index: 0 });
 
   const finishGame = () => game.round === TEN && setGame({ ...game, endGame: true });
 
@@ -52,7 +51,7 @@ export default function GameProvider(props) {
   const gameResult = () => {
     let result = 'Empate!';
 
-    const areHandsLenghtValid = game.playerHand.length > ZERO && game.cpuHand.length > ZERO;
+    const areHandsLenghtValid = game.playerHand.length > 0 && game.cpuHand.length > 0;
     const isGameIndexValid = game.index <= INDEX_LIMIT;
 
     if (areHandsLenghtValid && isGameIndexValid) {
@@ -61,11 +60,13 @@ export default function GameProvider(props) {
 
       const arePlayerAttsGreaterThan = playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt];
       const arePlayerAttsLesserThan = playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt];
-      const isSuperTrunfo = player[game.selectedAtt] === 'super trunfo';
+      const isSuperTrunfo = playerAtts[game.selectedAtt] === 'super trunfo';
 
       if (arePlayerAttsGreaterThan || isSuperTrunfo) {
         result = 'Boa!';
-      } else if (arePlayerAttsLesserThan) {
+      }
+      
+      if (arePlayerAttsLesserThan) {
         result = 'Deu ruim!';
       }
     }
@@ -85,25 +86,30 @@ export default function GameProvider(props) {
   };
 
   const setScore = () => {
-    const result = gameResult();
+    if (game.next) {
+      const result = gameResult();
+     
+      switch (result) {
+      case 'Boa!':
+        return setGame(
+          { ...game,
+            round: game.round + 1,
+            playerScore: game.playerScore + 1,
+          },
+        );
+      case 'Deu ruim!':
+        return setGame(
+          { ...game,
+            round: game.round + 1,
+            cpuScore: game.cpuScore + 1,
+          },
+        );
+      default:
+        return setGame({ ...game, round: game.round + 1 });
+      }
+    }
 
-    const resultsObj = {
-      'Boa!': setGame(
-        { ...game,
-          round: game.round + 1,
-          playerScore: game.playerScore + 1,
-        },
-      ),
-      'Deu ruim!': setGame(
-        { ...game,
-          round: game.round + 1,
-          cpuScore: game.cpuScore + 1,
-        },
-      ),
-      'Empate!': setGame({ ...game, round: game.round + 1 })
-    }   
-
-    return game.next && resultsObj[result];
+    return;
   };
 
   const playAgain = () => {    
@@ -111,11 +117,11 @@ export default function GameProvider(props) {
       playerHand: [],
       cpuHand: [],
       next: false,
-      index: ZERO,
+      index: 0,
       selectedAtt: game.selectedAtt,
-      playerScore: ZERO,
-      cpuScore: ZERO,
-      round: ZERO,
+      playerScore: 0,
+      cpuScore: 0,
+      round: 0,
       endGame: false,
       playAgain: false,
     });
