@@ -1,91 +1,74 @@
 import styled from 'styled-components';
 
 export const CardForm = styled.div`
-  width: 300px;    
-  padding: 10px 25px 10px 10px;
-  
-  p {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    text-shadow: 1px 1px white;
-  }
-`;
+    width: 300px;  
 
-export const NewCard = styled.h1`
-    font-family: 'Lobster', cursive;
-    font-weight: 400;
-    text-shadow: 1px 1px white;
+    h2 {
+        font-family: 'Lobster', cursive;
+        font-weight: 400;
+        font-size: calc(36rem / 16);
+        text-shadow: 1px 1px white;
+    }  
 
-`;
-
-export const LabelTitle = styled.h4`
-font-family: "Roboto", sans-serif;
-font-size: 1.2rem;
-margin: 5px 0 5px 0;
-text-shadow: 1px 1px white;
-`;
-
-export const Input = styled.input`
-    width: 270px;        
-    border-radius: 5px;
-    padding: 2px;
-`;
-
-export const DescriptionContainer = styled.label`
-    display: flex;
-    flex-direction: column;
-    
-`;
-
-export const Description = styled.textarea`
-    width: 270px;
-    height: 50px;   
-    
-`;
-
-export const Attributes = styled.label`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;        
-    font-weight: 400;
-    height: 40px;
-    width: 277px;
-
-    p {
+    h4 {
         font-family: "Roboto", sans-serif;
         font-size: 1.2rem;
-        font-weight: 600;
+        margin: 8px 0;
+        text-shadow: 1px 1px white;
     }
+    
+    textarea {
+        width: 100%;
+        height: 50px;  
+    }
+
+    input[type=text] {
+        width: 270px;        
+        border-radius: 5px;
+        padding: 2px;
+        width: 100%;
+    }
+
+    input[type=number] {
+        width: 100px; 
+    }
+
+    select {
+        border-radius: 5px;
+        padding: 2px;
+    }   
+
+    input[type=checkbox] {
+        margin-right: 8px;
+    }
+   
 `;
 
-export const InputContainer = styled.label`
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    width: 306px;
-    height: 28px;
-    margin-bottom: 20px;
-`;
+export const AttributesContainer = styled.div`
+    margin: 16px 0;
 
-export const InputAtt = styled(Input)`   
-    width: 100px;    
-`;
+    label {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px 0;
+        width: 100%;
+    }
 
-export const InputImg = styled(Input)`
-    width: 194px;
-`;
-
-export const SelectRarity = styled.select`
-    border-radius: 5px;
-    padding: 2px;
+    span {
+        font-family: "Roboto", sans-serif;
+        font-weight: 600;
+        font-size: var(--19px);
+        text-shadow: 1px 1px white;
+    }
 `;
 
 export const CheckSuperTrunfo = styled.label`
     display: ${(props) => (props.isTrunfo ? 'none' : 'inline')};
     margin-left: 10px;
+  
     span {
         font-family: "Roboto", sans-serif;
+        font-weight: bold;
     }
     
 `;

@@ -1,22 +1,12 @@
-/* eslint-disable no-magic-numbers */
-/* eslint-disable comma-dangle */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CardContext } from '../context/CardProvider';
 import {
-  Attributes,
-  CardForm, CheckSuperTrunfo, Description,
-  DescriptionContainer,
-  Input,
-  InputAtt,
-  InputContainer,
-  InputImg,
-  LabelTitle,
-  NewCard,
+  AttributesContainer,
+  CardForm,
+  CheckSuperTrunfo,
   PlayButton,
   SaveButton,
-  SelectRarity
 } from './styles/FormStyles';
 
 export default function Form() {
@@ -31,13 +21,11 @@ export default function Form() {
 
   return (
     <CardForm>
-      <NewCard>
-        Adicionar nova carta
-      </NewCard>
+      <h2>Adicionar nova carta</h2>
       <form>
-        <LabelTitle>Nome da carta</LabelTitle>
-        <InputContainer htmlFor="card-name">
-          <Input
+        <label htmlFor="card-name">
+          <h4>Nome da carta</h4>
+          <input
             id="card-name"
             maxLength="15"
             name="name"
@@ -45,55 +33,56 @@ export default function Form() {
             onChange={ handleCard }
             type="text"
           />
-        </InputContainer>
-        <DescriptionContainer htmlFor="card-description">
-          <LabelTitle>Descrição</LabelTitle>
-          <Description
+        </label>
+        <label htmlFor="card-description">
+          <h4>Descrição</h4>
+          <textarea
             id="card-description"
             name="description"
             maxLength="96"
             value={ card.description }
             onChange={ handleCard }
           />
-        </DescriptionContainer>
-        <Attributes htmlFor="card-att1">
-          <p>Velocidade</p>
-          <InputAtt
-            id="card-att1"
-            type="number"
-            name="velocidade"
-            min="0"
-            value={ card.attributes.velocidade }
-            onChange={ handleCard }
-          />
-        </Attributes>
+        </label>
+        <AttributesContainer>
+          <label htmlFor="card-att1">
+            <span>Velocidade</span>
+            <input
+              id="card-att1"
+              type="number"
+              name="velocidade"
+              min="0"
+              value={ card.attributes.velocidade }
+              onChange={ handleCard }
+            />
+          </label>
+          <label htmlFor="card-att2">
+            <span>Peso</span>
+            <input
+              id="card-att2"
+              type="number"
+              name="peso"
+              min="0"
+              value={ card.attributes.peso }
+              onChange={ handleCard }
+            />
+          </label>
 
-        <Attributes htmlFor="card-att2">
-          <p>Peso</p>
-          <InputAtt
-            id="card-att2"
-            type="number"
-            name="peso"
-            min="0"
-            value={ card.attributes.peso }
-            onChange={ handleCard }
-          />
-        </Attributes>
-
-        <Attributes htmlFor="card-att3">
-          <p>Comprimento</p>
-          <InputAtt
-            id="card-att3"
-            type="number"
-            name="comprimento"
-            min="0"
-            value={ card.attributes.comprimento }
-            onChange={ handleCard }
-          />
-        </Attributes>
-        <InputContainer htmlFor="card-image">
-          <LabelTitle>Imagem</LabelTitle>
-          <InputImg
+          <label htmlFor="card-att3">
+            <span>Comprimento</span>
+            <input
+              id="card-att3"
+              type="number"
+              name="comprimento"
+              min="0"
+              value={ card.attributes.comprimento }
+              onChange={ handleCard }
+            />
+          </label>
+        </AttributesContainer>
+        <label htmlFor="card-image">
+          <h4>Imagem</h4>
+          <input
             id="card-image"
             type="text"
             name="image"
@@ -102,10 +91,10 @@ export default function Form() {
             onChange={ handleCard }
           />
 
-        </InputContainer>
+        </label>
         <label htmlFor="card-rarity">
-          <LabelTitle>Raridade</LabelTitle>
-          <SelectRarity
+          <h4>Raridade</h4>
+          <select
             id="card-rarity"
             name="rarity"
             onChange={ handleCard }
@@ -113,7 +102,7 @@ export default function Form() {
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muitoRaro">Muito raro</option>
-          </SelectRarity>
+          </select>
         </label>
         <CheckSuperTrunfo isTrunfo={ checkForSuperTrunfo() } htmlFor="super-trunfo">
           <input
@@ -126,7 +115,6 @@ export default function Form() {
           <span>Super Trunfo</span>
         </CheckSuperTrunfo>
         <br />
-
         <SaveButton
           available={ isDisabled.disabled }
           type="button"
@@ -134,7 +122,6 @@ export default function Form() {
           onClick={ () => saveCard() }
         >
           Salvar
-
         </SaveButton>
         <PlayButton
           type="button"

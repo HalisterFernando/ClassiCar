@@ -4,18 +4,18 @@ const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #065653;
+    background-color: var(--dark-green);
     margin: 0;
     padding: 2px 30px;
     height: 80px;
-    border-bottom: 15px double white;
+    border-bottom: 15px double white; 
 
     h1 {
         font-size: 2.5rem;
         font-family: 'Lobster', cursive;
         font-weight: 300;
         color: white;
-        text-shadow: 0 1px 3px black;        
+        text-shadow: 0 1px 3px black; 
     }
 
     button {

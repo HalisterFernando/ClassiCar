@@ -1,9 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+:root {
+    --dark-green: #065653;
+    --14px: 0.875rem;
+    --15px: 0.9375rem;
+    --16px: 1rem;
+    --17px: 1.0625rem;
+    --18px: 1.125rem;
+    --19px: 1.1875rem;
+    --20px: 1.25rem;
+    --21px: 1.3125rem;
+    --32px: 2rem;
+}
+
 body {
     background-color: #aec8bf;
+    
+}
+
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
-    ;
+    box-sizing: border-box;
 }
