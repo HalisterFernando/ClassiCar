@@ -67,7 +67,6 @@ export default function Form() {
               onChange={ handleCard }
             />
           </label>
-
           <label htmlFor="card-att3">
             <span>Comprimento</span>
             <input

@@ -2,6 +2,9 @@
 
 :root {
     --dark-green: #065653;
+    --white-fa: #fafafa;                 
+    --blue-green: #358680; 
+    --light-green: #aec8bf;
     --14px: 0.875rem;
     --15px: 0.9375rem;
     --16px: 1rem;
@@ -14,7 +17,7 @@
 }
 
 body {
-    background-color: #aec8bf;
+    background-color: var(--light-green);
     
 }
 

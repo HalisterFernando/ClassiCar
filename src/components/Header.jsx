@@ -16,9 +16,14 @@ export default function Header() {
   return (
     <HeaderContainer>
       <h1>ClassiCar Trunfo</h1>
-      <button type="button" onClick={ () => renderRules() }>
-        Regras
-      </button>
+      <div>
+        <a href="#contact">
+          Contato
+        </a>
+        <button type="button" onClick={ () => renderRules() }>
+          Regras
+        </button>
+      </div>
     </HeaderContainer>
   );
 }

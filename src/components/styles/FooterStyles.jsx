@@ -4,12 +4,12 @@ export const FooterContainer = styled.footer`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #065653;
+    background-color: var(--dark-green);
     border-top: 15px double white;   
     position: absolute;
     bottom: 0;
     width: 100%;
-    
+    padding: 16px;    
 
     div {
         display: flex;
@@ -20,16 +20,14 @@ export const FooterContainer = styled.footer`
         font-size: 1rem;
         text-align: center;
         text-shadow: 0 1px 3px black;
-    }    
-
-    
+    }       
 `;
 
-export const Links = styled.div`
-    height: fit-content;
+export const Links = styled.div`  
     nav {
-        display: flex;
+        display: flex;        
         gap: 30px;
+        
 
         a {
             text-decoration: none;
@@ -37,7 +35,8 @@ export const Links = styled.div`
             font-size: 2.5rem;
             filter: drop-shadow(2px 1px 1px black);
             &:hover {
-                border-bottom: 1px solid white;
+                color: black;
+                filter: drop-shadow(2px 1px 1px white);
             }
         }
     }

@@ -4,7 +4,7 @@ export const CardFrame = styled.div`
 position: relative;
 width: 368px;
 height: 549px;
-background: #fafafa;
+background: var(--white-fa);
 box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 `;
@@ -15,7 +15,7 @@ top: 10px;
 left: 10px;
 width: 348px;
 height: 529px;
-background: #358680;
+background: var(--blue-green);
 border-radius: 10px;
 border: 1px solid #1e130d;
 `;
@@ -39,7 +39,7 @@ height: 40px;
 left: 0;
 top: 0;
 z-index: 1;
-background: #065653;
+background: var(--dark-green);
 border-radius: 10px 10px 0px 0px;
 border: 1px solid #1e130d;
 padding: 0 10px 0 10px;
@@ -77,12 +77,12 @@ box-sizing: border-box;
 font-family: "Roboto", sans-serif;
 font-size: 18px;
 line-height: 13px;
-background-color: #358680;
+background-color: var(--blue-green);
 border-bottom: 1px solid #1e130d;
 z-index: 1;
 
 span {
-  color: #fafafa;
+  color: var(--white-fa);
   font-size: 14px;
   line-height: normal;
   text-align: justify;
@@ -122,7 +122,7 @@ export const Attributes = styled.div`
 `;
 
 export const AttributeName = styled.span`
-background-color: #358680;
+background-color: var(--blue-green);
 border-top-left-radius: 15px;
 border-bottom-left-radius: 15px;
 height: 30px;
@@ -153,7 +153,7 @@ export const AttributeValue = styled.span`
     width: 60px;
     text-align: center;
     box-sizing: border-box;
-    background-color: #358680;
+    background-color: var(--blue-green);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     font-family: "Roboto", sans-serif;

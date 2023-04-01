@@ -17,7 +17,7 @@ export const SuperLogo = styled.span`
         top: 5px;
         left: 5px;
         border: 1px solid black;        
-        background-color: #358680;
+        background-color: var(--blue-green);
         border-radius: 50%;  
         width: 60px;
         height: 60px;       

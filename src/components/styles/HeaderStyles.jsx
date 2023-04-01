@@ -32,6 +32,24 @@ const HeaderContainer = styled.header`
             background-color: #aec8bf;
         }
     }
+
+    a {
+        background-color: white;
+        text-decoration: none;
+        color: inherit;
+        margin-right: 8px;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 30px;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.2rem;
+        font-weight: bold;       
+        box-shadow: 0 2px 2px black;
+        transition: background-color 0.3s ease-in-out;
+        &:hover {
+            background-color: #aec8bf;
+        }
+    }
 `;
 
 export default HeaderContainer;

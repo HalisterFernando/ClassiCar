@@ -42,7 +42,7 @@ export const RulesInnerContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);       
-    background-color: #065653;
+    background-color: var(--dark-green);
     text-align: center;
     padding: 5px 25px;
     border-radius: 5px;
