@@ -9,11 +9,11 @@ export const RulesContainer = styled.div`
     z-index: 200;
 
     h1 {
-        font-size: 2.5rem;
+        font-size: calc(48rem / 16);
     }
 
     h2 {
-        font-size: 2.0rem
+        font-size: calc(36rem / 16);
     }
 
     h1, h2 {
@@ -21,12 +21,13 @@ export const RulesContainer = styled.div`
         font-weight: 300;
         color: white;
         text-shadow: 0 1px 3px black;
+        margin: 8px 0;
     }
 
     p {
         color: white;
         font-family: "Roboto", sans-serif;
-        font-size: 1.5rem;
+        font-size: calc(26rem / 16);
         text-shadow: 0 1px 3px black;
     }
 
@@ -68,9 +69,9 @@ export const OkBtn = styled.button`
     border-radius: 5px;
     padding: 5px 55px;
     font-family: "Roboto", sans-serif;
-    font-size: 1.5rem;
+    font-size: calc(24rem / 16);
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 16px 0;
     box-shadow: 0 2px 2px black;
     transition: background-color 0.3s ease-in-out;
     &:hover {
