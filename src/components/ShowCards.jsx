@@ -7,7 +7,7 @@ import {
   CardFrame,
   CardRarity,
   Description,
-  ImageFrame,
+  Image,
   InnerFrame,
   License,
 } from './styles/CardStyles';
@@ -31,14 +31,14 @@ export default function ShowCards(props) {
   return (
     <CardFrame>
       <InnerFrame>
-        <ImageFrame>
+        <Image>
           <div>
             <p>{name}</p>
             <CardRarity rarity={ rarity } />
           </div>
           <img src={ image } alt="carro" />
           <SuperTrunfo savedSuperTrunfo={ superTrunfo } />
-        </ImageFrame>
+        </Image>
         <Description>
           <span>{description}</span>
         </Description>

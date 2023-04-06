@@ -10,8 +10,9 @@ import {
   CardFrame,
   CardRarity,
   Description,
-  ImageFrame,
+  Image,
   InnerFrame,
+  Title,
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
@@ -21,14 +22,14 @@ export default function Card() {
   return (
     <CardFrame>
       <InnerFrame>
-        <ImageFrame>
-          <div>
-            <p>{card.name}</p>
-            <CardRarity rarity={ card.rarity } />
-          </div>
+        <Title>
+          <span>{card.name}</span>
+          <CardRarity rarity={ card.rarity } />
+        </Title>
+        <Image>
           <img src={ card.image || Example } alt="Imagem da carta" />
           <SuperTrunfo />
-        </ImageFrame>
+        </Image>
         <Description>
           <span>{card.description}</span>
         </Description>
