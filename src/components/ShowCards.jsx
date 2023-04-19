@@ -1,9 +1,7 @@
 import propTypes from 'prop-types';
 import React from 'react';
 import {
-  AttributeName,
-  Attributes,
-  AttributeValue, CardAttributes,
+
   CardFrame,
   CardRarity,
   Description,
@@ -12,6 +10,7 @@ import {
   License,
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
+import CardAtts from './CardAtts';
 
 export default function ShowCards(props) {
   const {
@@ -42,29 +41,7 @@ export default function ShowCards(props) {
         <Description>
           <span>{description}</span>
         </Description>
-        <CardAttributes>
-          <Attributes>
-            <AttributeName>Velocidade</AttributeName>
-            <AttributeValue>
-              {`${att1}`}
-              <span>Km/h</span>
-            </AttributeValue>
-          </Attributes>
-          <Attributes>
-            <AttributeName>Peso</AttributeName>
-            <AttributeValue>
-              {`${att2}`}
-              <span>Kg</span>
-            </AttributeValue>
-          </Attributes>
-          <Attributes>
-            <AttributeName>Comprimento</AttributeName>
-            <AttributeValue>
-              {`${att3}`}
-              <span>Mts</span>
-            </AttributeValue>
-          </Attributes>
-        </CardAttributes>
+        <CardAtts />
       </InnerFrame>
       <License
         href={ link }

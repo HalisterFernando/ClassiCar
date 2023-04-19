@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
 import Example from '../images/example.jpg';
-import Attribute from './Attribute';
+import CardAtts from './CardAtts';
+
 import {
-  AttributeName,
-  Attributes,
-  AttributeValue,
-  CardAttributes,
   CardFrame,
   CardRarity,
   Description,
@@ -33,26 +30,11 @@ export default function Card() {
         <Description>
           <span>{card.description}</span>
         </Description>
-        <CardAttributes>
-          <Attributes>
-            <AttributeName>Velocidade</AttributeName>
-            <Attribute attribute="velocidade" value={ card.attributes.velocidade } />
-          </Attributes>
-          <Attributes>
-            <AttributeName>Peso</AttributeName>
-            <AttributeValue>
-              {`${card.attributes.peso}`}
-              <span>Kg</span>
-            </AttributeValue>
-          </Attributes>
-          <Attributes>
-            <AttributeName>Comprimento</AttributeName>
-            <AttributeValue>
-              {`${card.attributes.comprimento}`}
-              <span>Mts</span>
-            </AttributeValue>
-          </Attributes>
-        </CardAttributes>
+        <CardAtts
+          speed={ card.attributes.velocidade }
+          weight={ card.attributes.peso }
+          length={ card.attributes.comprimento }
+        />
       </InnerFrame>
     </CardFrame>
   );

@@ -62,16 +62,15 @@ export const Description = styled.div`
     display: flex;
     align-items: center;
     width: 317px;
-    height: 20px;
-    top: 300px;
+    height: 35px;
+    top: 287px;
     left: 14px;
     padding: 5px 8px 5px 8px;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
     line-height: 13px;
-    background-color: var(--blue-green);
-    border-bottom: 1px solid #1e130d;
+    background-color: var(--blue-green);    
     z-index: 1;
 
     span {
@@ -82,6 +81,7 @@ export const Description = styled.div`
       overflow-wrap: break-word;
       word-wrap: break-word;
       width: 300px;
+      
       text-shadow: 1px 1px 1px black;
     }
 
@@ -103,26 +103,50 @@ export const CardAttributes = styled.div`
     border: 1px solid #1e130d;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    gap: 10px;
 `;
 
 export const Attributes = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;  
   align-items: center;
   width: 250px;
   height: 50px;
-  padding-top: 10px;
-`;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;    
+  background-color: var(--dark-green);
+  border: 1.5px solid var(--white-fa);
 
-export const AttributeName = styled.span`
-background-color: var(--blue-green);
-border-top-left-radius: 15px;
-border-bottom-left-radius: 15px;
-height: 30px;
-width: 120px;
-text-align: center;
-line-height: 30px;
-font-family: "Roboto", sans-serif;
+    div {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      left: 2px;
+      top: 1px;
+      background-color: var(--white-fa);
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+    }
+  
+    img {
+      width: 30px
+
+    }
+
+    span {
+      position: absolute;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      height: 30px;
+      width: 120px;
+      right: 0;
+      text-align: center;
+      line-height: 30px;
+      font-family: "Roboto", sans-serif;
+    }
 `;
 
 export const AttributeValue = styled.span`
