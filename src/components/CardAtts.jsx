@@ -12,19 +12,34 @@ export default function CardAtts({ speed, weight, length }) {
         <div>
           <img src={ Speedometer } alt="velocidade" />
         </div>
-        <span>{`Velocidade: ${speed}`}</span>
+        <span>
+          Velocidade
+
+          <p>{`${speed} Km/h`}</p>
+
+        </span>
       </Attributes>
       <Attributes>
         <div>
           <img src={ Weight } alt="peso" />
         </div>
-        <span>{`Peso: ${weight}`}</span>
+        <span>
+          Peso
+
+          <p>{`${weight} kg`}</p>
+
+        </span>
       </Attributes>
       <Attributes>
         <div>
           <img src={ CarL } alt="comprimento" />
         </div>
-        <span>{`Comprimento: ${length}`}</span>
+        <span>
+          Comprimento
+
+          <p>{`${length} mts`}</p>
+
+        </span>
       </Attributes>
     </CardAttributes>
 
@@ -32,6 +47,7 @@ export default function CardAtts({ speed, weight, length }) {
 }
 
 CardAtts.propTypes = {
-  attribute: propTypes.string.isRequired,
-  value: propTypes.number.isRequired,
+  speed: propTypes.string.isRequired,
+  weight: propTypes.string.isRequired,
+  length: propTypes.string.isRequired,
 };

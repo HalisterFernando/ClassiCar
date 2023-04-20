@@ -65,7 +65,7 @@ export const Description = styled.div`
     height: 35px;
     top: 287px;
     left: 14px;
-    padding: 5px 8px 5px 8px;
+    padding: 5px 8px;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
@@ -80,8 +80,7 @@ export const Description = styled.div`
       text-align: justify;
       overflow-wrap: break-word;
       word-wrap: break-word;
-      width: 300px;
-      
+      width: 300px;      
       text-shadow: 1px 1px 1px black;
     }
 
@@ -113,8 +112,7 @@ export const Attributes = styled.div`
   align-items: center;
   width: 250px;
   height: 50px;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;    
+  border-radius: 100px;
   background-color: var(--dark-green);
   border: 1.5px solid var(--white-fa);
 
@@ -133,49 +131,23 @@ export const Attributes = styled.div`
   
     img {
       width: 30px
-
     }
 
     span {
       position: absolute;
-      border-top-left-radius: 15px;
-      border-bottom-left-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 15px;
       height: 30px;
-      width: 120px;
+      width: 180px;
       right: 0;
       text-align: center;
       line-height: 30px;
-      font-family: "Roboto", sans-serif;
+      font-family: "Roboto", sans-serif;      
+      padding: 0 8px;
+      background-color: var(--white-fa);
+      margin-right: 8px;     
     }
-`;
-
-export const AttributeValue = styled.span`
-  position: relative;
-  width: 40px;
-  display: flex;
-  background-color: white;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  justify-content: space-between;
-  height: 30px;
-  width: 130px;
-  line-height: 30px;
-  padding-left: 30px;
-  text-align: right;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-
-  span {
-    position: absolute;
-    left: 70px;
-    width: 60px;
-    text-align: center;
-    box-sizing: border-box;
-    background-color: var(--blue-green);
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    font-family: "Roboto", sans-serif;
-  }
 `;
 
 export const CardRarity = styled.span`
