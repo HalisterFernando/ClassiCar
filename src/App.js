@@ -26,7 +26,6 @@ export default function App() {
             <FormContainer>
               <Form />
               <CardPreview>
-                <h1>Pré-visualização</h1>
                 <Card />
               </CardPreview>
             </FormContainer>

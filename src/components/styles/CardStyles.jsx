@@ -23,7 +23,7 @@ export const InnerFrame = styled.div`
 export const Image = styled.div`
   position: absolute;
   width: 317px;
-  height: 238px;
+  height: 218px;
   left: 14.5px;
   top: 50px;  
   border: 1px solid var(--card-border);  
@@ -62,16 +62,15 @@ export const Description = styled.div`
     display: flex;
     align-items: center;
     width: 317px;
-    height: 35px;
-    top: 287px;
+    height: 55px;
+    top: 269px;
     left: 14px;
     padding: 5px 8px;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
     line-height: 13px;
-    background-color: var(--blue-green);    
-    z-index: 1;
+    background-color: var(--blue-green);        
 
     span {
       color: var(--white-fa);
@@ -81,7 +80,8 @@ export const Description = styled.div`
       overflow-wrap: break-word;
       word-wrap: break-word;
       width: 300px;      
-      text-shadow: 1px 1px 1px black;
+      text-shadow: 1px 1px 1px black;      
+      height: 100%;
     }
 
 `;
@@ -93,11 +93,11 @@ export const CardAttributes = styled.div`
     align-items: center;
     justify-content: center;
     width: 317px;
-    height: 197.5px;
+    height: 190px;
     padding-right: 15px;
     box-sizing: border-box;
     left: 14px;
-    top: 320px;
+    top: 325px;
     background: #aec8bf;
     border: 1px solid #1e130d;
     border-bottom-left-radius: 5px;
@@ -174,6 +174,5 @@ export const License = styled.a`
   top: 515px;
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
-  color: black
-  
+  color: black;  
 `;
