@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
 import Example from '../images/example.jpg';
 import CardAtts from './CardAtts';
+import RarityIcon from '../images/rarity-icon.png';
 
 import {
   CardFrame,
@@ -10,6 +11,7 @@ import {
   Image,
   InnerFrame,
   Title,
+  License,
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
@@ -21,7 +23,9 @@ export default function Card() {
       <InnerFrame>
         <Title>
           <span>{card.name}</span>
-          <CardRarity rarity={ card.rarity } />
+          <CardRarity rarity={ card.rarity }>
+            <img src={ RarityIcon } alt="raridade" />
+          </CardRarity>
         </Title>
         <Image>
           <img src={ card.image || Example } alt="Imagem da carta" />
@@ -36,6 +40,7 @@ export default function Card() {
           length={ card.attributes.comprimento }
         />
       </InnerFrame>
+      <License href="#">Autor: Fulano da Silva</License>
     </CardFrame>
   );
 }

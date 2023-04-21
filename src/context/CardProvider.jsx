@@ -90,7 +90,7 @@ export default function CardProvider(props) {
     .some(({ isTrunfo }) => isTrunfo);
 
   const removeCard = (name) => {
-    setSavedCards(savedCards.filter((card) => card.name !== name));
+    setSavedCards(savedCards.filter((cardElement) => cardElement.name !== name));
   };
 
   const handleFilter = ({ target: { name, value, checked } }) => {

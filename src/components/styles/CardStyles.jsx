@@ -150,29 +150,37 @@ export const Attributes = styled.div`
     }
 `;
 
-export const CardRarity = styled.span`
+export const CardRarity = styled.div`
     position: absolute ;
-    top: 15px;
-    left: 280px;
-    width: 30px;
-    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 13px;
+    right: 25px;
+    width: 35px;
+    height: 35px;
     border: 1px solid black;
     border-radius: 50%;
     background-color: ${(props) => {
     if (props.rarity) {
       const { raro, muitoRaro } = props.rarity;
-      if (raro) return '#C1D6E8';
-      if (muitoRaro) return '#659DD4';
+      if (raro) return 'silver';
+      if (muitoRaro) return 'gold';
       return '#F3F3F3';
     }
   }};
+    img {
+      width: 25px;
+    }
+
 `;
 
 export const License = styled.a`
   position: absolute;
-  left: 30px;
-  top: 515px;
+  bottom: 10px;
+  left: 25px;
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
-  color: black;  
+  color: black;
+  font-size:calc(12rem / 16) ;
 `;
