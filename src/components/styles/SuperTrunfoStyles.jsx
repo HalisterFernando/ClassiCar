@@ -1,48 +1,42 @@
 import styled from 'styled-components';
 
-export const SuperLogo = styled.span`    
-    display: ${(props) => (props.isTrunfo ? 'block' : 'none')};
-    position: absolute;
+const SuperLogo = styled.div`    
+    display: ${(props) => (props.isTrunfo ? 'flex' : 'none')};
+    position: absolute;    
+    justify-content: center;
+    align-items: center;
     background-color: white;
     border: 1px solid black;
     border-radius: 50%;
-    top: 42px;
+    top: 5px;
     left: 5px;
     color: white;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     z-index: 2;    
-    div {
-        position: absolute;
-        top: 5px;
-        left: 5px;
+    
+    div {        
+        position: relative;
         border: 1px solid black;        
         background-color: var(--blue-green);
         border-radius: 50%;  
-        width: 60px;
-        height: 60px;       
-    }
+        width: 70px;
+        height: 70px;
 
+        span {
+            position: absolute;
+            top: 26px;
+            left: -2px;
+            color: black;
+            font-size: calc(14rem / 16);            
+            font-family: 'Lobster';
+            background-color: var(--white-fa);
+            transform: rotate(-18.92deg);
+            width: 72px;
+            border-radius: 1px;
+            text-align: center;
+        }       
+    }
 `;
 
-export const InnerText = styled.span`
-    position: absolute;  
-    display: flex ;
-    align-items: center;
-    justify-content: center;
-    top: 24px;
-    left: -2px;
-    width: 62px;
-    height: 12px;
-    background-color: white;
-    z-index: 50;
-    transform: rotate(-18.92deg);
-
-    p {
-        color: black;
-        font-size: 10px;
-        padding-bottom: 1px;
-        font-family: "Roboto", sans-serif;
-    }
-        
-`;
+export default SuperLogo;

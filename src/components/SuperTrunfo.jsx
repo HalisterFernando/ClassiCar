@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
-import { InnerText, SuperLogo } from './styles/SuperTrunfoStyles';
+import SuperLogo from './styles/SuperTrunfoStyles';
 
 export default function SuperTrunfo(props) {
   const { card } = useContext(CardContext);
@@ -9,9 +9,9 @@ export default function SuperTrunfo(props) {
   return (
     <SuperLogo isTrunfo={ card.isTrunfo ? true : savedSuperTrunfo }>
       <div>
-        <InnerText>
-          <p>Super Trunfo</p>
-        </InnerText>
+
+        <span>Super Trunfo</span>
+
       </div>
     </SuperLogo>
   );
