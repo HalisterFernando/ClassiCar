@@ -1,7 +1,5 @@
 # ClassiCar :blue_car:
 
-# Código está sendo refatorado, assim que acabar será feito novo deploy
-
 Este projeto foi realizado no módulo de **Front-end** da [Trybe](https://www.betrybe.com/?utm_source=trybe.com.br) utilizando **React**. :rocket:
 
 
