@@ -15,7 +15,8 @@ import {
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
-export default function Card({ name, rarity, image, description, speed, weight, length, author }) {  
+export default function Card({ 
+  name, rarity, image, superTrunfo, description, speed, weight, length, author, license, link }) {  
 
   return (
     <CardFrame>
@@ -28,7 +29,7 @@ export default function Card({ name, rarity, image, description, speed, weight, 
         </Title>
         <Image>
           <img src={ image || Example } alt="Imagem da carta" />
-          <SuperTrunfo />
+          <SuperTrunfo superTrunfo={superTrunfo}/>
         </Image>
         <Description>
           <span>{description}</span>
@@ -39,7 +40,7 @@ export default function Card({ name, rarity, image, description, speed, weight, 
           length={ length }
         />
       </InnerFrame>
-      <License href="#">{author ? `Autor: ${author}` : ''}</License>
+      <License href={link ? link : '#'}>{author ? `Autor: ${author} Tipo de licença: ${license}` : ''}</License>
     </CardFrame>
   );
 }
