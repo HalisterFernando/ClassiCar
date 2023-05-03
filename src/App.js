@@ -7,9 +7,10 @@ import Form from './components/Form';
 import Gameplay from './components/Gameplay';
 import Header from './components/Header';
 import Rules from './components/Rules';
-import Container from './components/styles/Fonts';
+import Fonts from './components/styles/Fonts';
 import FormContainer from './components/styles/FormContainer';
 import CardPreview from './components/styles/PreviewStyles';
+import { Container } from './components/styles/GameplayStyles';
 
 import './index.css';
 
@@ -20,7 +21,7 @@ export default function App() {
         exact
         path="/"
         element={
-          <Container>
+          <Fonts>
             <Rules />
             <Header />
             <FormContainer>
@@ -31,19 +32,22 @@ export default function App() {
             </FormContainer>
             <CardFilter />
             <Footer />
-          </Container>
+          </Fonts>
         }
       />
       <Route
         exatc
         path="/gameplay"
         element={
-          <Container>
-            <Rules />
-            <Header />
-            <Gameplay />
-            <Footer />
-          </Container>
+          <Fonts>
+            <Container >
+              <Rules />
+              <Header />
+              <Gameplay />
+              <Footer />
+            </Container>
+              
+          </Fonts>
         }
       />
 
