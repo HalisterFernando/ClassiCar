@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
-import ShowCards from './ShowCards';
 import {
   DeleteButton,
   DisplayCards,
@@ -8,6 +7,7 @@ import {
   Options,
   Search,
 } from './styles/CardFilterStyles';
+import Card from './Card';
 
 export default function CardFilter() {
   const { savedCards, removeCard, filter, handleFilter } = useContext(CardContext);
@@ -26,17 +26,18 @@ export default function CardFilter() {
     }
 
     return cardsToRender.length > 0 && cardsToRender.map((card) => (
-      <div key={ card.name }>
-        <ShowCards
+      
+      <div key={ card.name }>        
+        <Card
           name={ card.name }
+          rarity={ card.rarity }
           image={ card.image }
           description={ card.description }
-          att1={ card.attributes.velocidade }
-          att2={ card.attributes.peso }
-          att3={ card.attributes.comprimento }
-          rarity={ card.rarity }
+          speed={ card.attributes.velocidade }
+          weight={ card.attributes.peso }
+          length={ card.attributes.comprimento }
           superTrunfo={ card.isTrunfo }
-          licenseName={ card.license ? card.license.name : ' ' }
+          license={ card.license ? card.license.name : ' ' }
           author={ card.license ? card.license.author : ' ' }
           link={ card.license ? card.license.link : ' ' }
         />
