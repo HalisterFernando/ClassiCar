@@ -15,7 +15,7 @@ import {
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
-export default function Card({ name, image, description, speed, weight, length, author }) {  
+export default function Card({ name, rarity, image, description, speed, weight, length, author }) {  
 
   return (
     <CardFrame>
