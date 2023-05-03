@@ -1,19 +1,24 @@
 import styled from 'styled-components';
 
-export const FilterContainer = styled.div`
+export const FilterContainer = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 8px;
+
+    h2 {
+      font-family: 'Lobster', cursive;
+      font-weight: 400;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px white;
+    }
+
+    input[type=text] {
+      margin-top: 8px;
+    }
 `;
 
-export const Search = styled.h2`
-    font-family: 'Lobster', cursive;
-    font-weight: 400;
-    font-size: 2.5rem;
-    text-shadow: 2px 2px white;
-`;
-
-export const SearchLabel = styled.label`
+export const Search = styled.label`
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -29,9 +34,9 @@ export const Options = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-top: 15px;
+  margin: 8px 0 8px 0;
  
-  p {
+  span {
     margin-right: 10px;
     font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
@@ -63,7 +68,7 @@ export const DeleteButton = styled.button`
     margin-right: auto;
     margin-top: 20px;
     padding: 5px 10px;
-    background-color: #358680;
+    background-color: var(--blue-green);
     border: none;
     box-shadow: 0px 2px 2px white;
     border-radius: 5px;
@@ -73,6 +78,6 @@ export const DeleteButton = styled.button`
    
     &:hover {
       background-color: white;
-      box-shadow: 0px 2px 2px #358680;
+      box-shadow: 0px 2px 2px var(--blue-green);
     }
 `;

@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
 import Example from '../images/example.jpg';
-import Attribute from './Attribute';
+import CardAtts from './CardAtts';
+import RarityIcon from '../images/rarity-icon.png';
+
 import {
-  AttributeName,
-  Attributes,
-  AttributeValue,
-  CardAttributes,
   CardFrame,
   CardRarity,
   Description,
-  ImageFrame,
+  Image,
   InnerFrame,
+  Title,
+  License,
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
@@ -21,38 +21,26 @@ export default function Card() {
   return (
     <CardFrame>
       <InnerFrame>
-        <ImageFrame>
-          <div>
-            <p>{card.name}</p>
-            <CardRarity rarity={ card.rarity } />
-          </div>
+        <Title>
+          <span>{card.name}</span>
+          <CardRarity rarity={ card.rarity }>
+            <img src={ RarityIcon } alt="raridade" />
+          </CardRarity>
+        </Title>
+        <Image>
           <img src={ card.image || Example } alt="Imagem da carta" />
           <SuperTrunfo />
-        </ImageFrame>
+        </Image>
         <Description>
           <span>{card.description}</span>
         </Description>
-        <CardAttributes>
-          <Attributes>
-            <AttributeName>Velocidade</AttributeName>
-            <Attribute attribute="velocidade" value={ card.attributes.velocidade } />
-          </Attributes>
-          <Attributes>
-            <AttributeName>Peso</AttributeName>
-            <AttributeValue>
-              {`${card.attributes.peso}`}
-              <span>Kg</span>
-            </AttributeValue>
-          </Attributes>
-          <Attributes>
-            <AttributeName>Comprimento</AttributeName>
-            <AttributeValue>
-              {`${card.attributes.comprimento}`}
-              <span>Mts</span>
-            </AttributeValue>
-          </Attributes>
-        </CardAttributes>
+        <CardAtts
+          speed={ card.attributes.velocidade }
+          weight={ card.attributes.peso }
+          length={ card.attributes.comprimento }
+        />
       </InnerFrame>
+      <License href="#">Autor: Fulano da Silva</License>
     </CardFrame>
   );
 }

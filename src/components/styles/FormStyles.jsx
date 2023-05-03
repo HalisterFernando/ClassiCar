@@ -83,20 +83,20 @@ export const SaveButton = styled.button`
     font-family: "Roboto", sans-serif;
     background-color: ${(props) => {
     if (props.available) {
-      return '#fafafa';
+      return 'var(--white-fa)';
     }
-    return '#358680';
+    return 'var(--blue-green)';
   }};
 
 
 `;
 
 export const PlayButton = styled(SaveButton)`
-    background-color: #358680;
+    background-color: var(--blue-green);
     margin-left: 15px;
     transition: background-color 0.1s ease-in-out;
     &:hover {
       background-color: white;
-      box-shadow: 0px 2px 2px #358680;
+      box-shadow: 0px 2px 2px var(--blue-green);
     }
 `;

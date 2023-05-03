@@ -7,17 +7,17 @@ export default function Footer() {
   return (
     <FooterContainer>
       <div>
-        <p>
+        <span>
           Desenvolvido por Halister Fernando dos Santos com React,
           Styled Components e muitas canecas de café
-        </p>
-        <p>
+        </span>
+        <span>
           O link para as licensas Creative Commons
           das imagens que possuem estão no rodapé das cartas
-        </p>
+        </span>
       </div>
       <Links>
-        <nav>
+        <nav id="contact">
           <a
             href="https://github.com/HalisterFernando"
             aria-label="GitHub"

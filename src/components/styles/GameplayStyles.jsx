@@ -1,20 +1,24 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;   
+    justify-content: space-between;
+    height: 100vh;
+   
+`;
+
 export const GameMainContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-right: 20px;
-    padding-bottom: 200px;
-    min-height: 100vh;
+    
 `;
 
 export const GameContainer = styled.div`
     display: flex;
     justify-content: center;
-    gap: 25px;
-    
+    gap: 25px;    
+    padding: 0 40px;
 `;
 
 export const CpuCard = styled.div`
@@ -83,7 +87,7 @@ export const Setup = styled.div`
         padding: 5px 10px;
         border-radius: 5px;
         border: none;
-        background-color: #358680;
+        background-color: var(--blue-green);
         box-shadow: 0px 2px 2px white;
         font-size: 1.5rem;
         font-family: 'Lobster', cursive;
@@ -122,7 +126,7 @@ export const PlayAgain = styled.button`
         padding: 5px 10px;
         border-radius: 5px;
         border: none;
-        background-color: #358680;
+        background-color: var(--blue-green);
         box-shadow: 0px 2px 2px white;
         font-size: 1.5rem;
         font-family: 'Lobster', cursive;

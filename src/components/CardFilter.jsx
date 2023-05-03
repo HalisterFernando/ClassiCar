@@ -7,7 +7,6 @@ import {
   FilterContainer,
   Options,
   Search,
-  SearchLabel,
 } from './styles/CardFilterStyles';
 
 export default function CardFilter() {
@@ -53,8 +52,8 @@ export default function CardFilter() {
 
   return (
     <FilterContainer>
-      <SearchLabel htmlFor="search">
-        <Search>Encontre a carta desejada</Search>
+      <Search htmlFor="search">
+        <h2>Encontre a carta desejada</h2>
         <input
           id="search"
           name="search"
@@ -63,9 +62,9 @@ export default function CardFilter() {
           onChange={ handleFilter }
           placeholder="Digite o nome da carta"
         />
-      </SearchLabel>
+      </Search>
       <Options>
-        <p>Raridade</p>
+        <span>Raridade</span>
         <select
           data-testid="rare-filter"
           name="rarity"
@@ -83,7 +82,7 @@ export default function CardFilter() {
           checked={ filter.isTrunfo }
           onChange={ handleFilter }
         />
-        <p>Super Trunfo</p>
+        <span>Super Trunfo</span>
       </Options>
       <DisplayCards>
         {renderCards()}
