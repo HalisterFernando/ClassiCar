@@ -15,32 +15,31 @@ import {
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
-export default function Card() {
-  const { card } = useContext(CardContext);
+export default function Card({ name, image, description, speed, weight, length, author }) {  
 
   return (
     <CardFrame>
       <InnerFrame>
         <Title>
-          <span>{card.name}</span>
-          <CardRarity rarity={ card.rarity }>
+          <span>{name}</span>
+          <CardRarity rarity={ rarity }>
             <img src={ RarityIcon } alt="raridade" />
           </CardRarity>
         </Title>
         <Image>
-          <img src={ card.image || Example } alt="Imagem da carta" />
+          <img src={ image || Example } alt="Imagem da carta" />
           <SuperTrunfo />
         </Image>
         <Description>
-          <span>{card.description}</span>
+          <span>{description}</span>
         </Description>
         <CardAtts
-          speed={ card.attributes.velocidade }
-          weight={ card.attributes.peso }
-          length={ card.attributes.comprimento }
+          speed={ speed }
+          weight={ weight }
+          length={ length }
         />
       </InnerFrame>
-      <License href="#">Autor: Fulano da Silva</License>
+      <License href="#">{author ? `Autor: ${author}` : ''}</License>
     </CardFrame>
   );
 }
