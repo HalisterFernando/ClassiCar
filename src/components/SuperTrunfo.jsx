@@ -3,11 +3,11 @@ import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
 import SuperLogo from './styles/SuperTrunfoStyles';
 
-export default function SuperTrunfo(props) {
+export default function SuperTrunfo({superTrunfo}) {
   const { card } = useContext(CardContext);
-  const { savedSuperTrunfo } = props;
+  
   return (
-    <SuperLogo isTrunfo={ card.isTrunfo ? true : savedSuperTrunfo }>
+    <SuperLogo isTrunfo={ superTrunfo }>
       <div>
 
         <span>Super Trunfo</span>
