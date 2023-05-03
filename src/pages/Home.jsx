@@ -7,6 +7,7 @@ import CardPreview from '../components/styles/PreviewStyles';
 import Header from '../components/Header';
 import Rules from '../components/Rules';
 import Footer from '../components/Footer';
+import CardFilter from '../components/CardFilter';
 
 export default function Home() {
     const { card } = useContext(CardContext)
@@ -25,9 +26,11 @@ export default function Home() {
                     speed={card.attributes.velocidade}
                     weight={card.attributes.peso}
                     length={card.attributes.comprimento}
+                    superTrunfo={card.isTrunfo}
                     />
             </CardPreview>
         </FormContainer>
+        <CardFilter />
         <Footer />
     </>
   )
