@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { CardContext } from '../context/CardProvider';
 import { GameContext } from '../context/GameProvider';
 import Question from '../images/questionMark.png';
-import ShowCards from './ShowCards';
 import {
   Continue,
   CpuCard,
@@ -16,6 +15,7 @@ import {
   Select,
   Setup,
 } from './styles/GameplayStyles';
+import Card from './Card';
 
 const INDEXLIMIT = 9;
 const VALUE = 0.5;
@@ -74,16 +74,16 @@ export default function Gameplay() {
         isTrunfo,
         license } = game.playerHand[game.index];
       return (
-        <ShowCards
+        <Card
           name={ name }
           description={ description }
           image={ image }
-          att1={ attributes.velocidade }
-          att2={ attributes.peso }
-          att3={ attributes.comprimento }
+          speed={ attributes.velocidade }
+          weight={ attributes.peso }
+          length={ attributes.comprimento }
           rarity={ rarity }
           superTrunfo={ isTrunfo }
-          licenseName={ license.name }
+          license={ license.name }
           author={ license.author }
           link={ license.link }
         />
@@ -103,16 +103,16 @@ export default function Gameplay() {
         license } = game.cpuHand[game.index];
 
       return (
-        <ShowCards
+        <Card
           name={ name }
           description={ description }
           image={ image }
-          att1={ attributes.velocidade }
-          att2={ attributes.peso }
-          att3={ attributes.comprimento }
+          speed={ attributes.velocidade }
+          weight={ attributes.peso }
+          length={ attributes.comprimento }
           rarity={ rarity }
           superTrunfo={ isTrunfo }
-          licenseName={ license.name }
+          license={ license.name }
           author={ license.author }
           link={ license.link }
         />
@@ -196,13 +196,13 @@ export default function Gameplay() {
           {gameRender()}
         </div>
         <QuestionCard next={ game.next }>
-          <ShowCards
+          <Card
             image={ Question }
             name="?"
-            att1="?"
-            att2="?"
-            att3="?"
-            licenseName=""
+            speed="?"
+            weight="?"
+            length="?"
+            license=""
             author=""
             link=""
           />
