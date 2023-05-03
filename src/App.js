@@ -1,18 +1,14 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Card from './components/Card';
-import CardFilter from './components/CardFilter';
 import Footer from './components/Footer';
-import Form from './components/Form';
 import Gameplay from './components/Gameplay';
 import Header from './components/Header';
 import Rules from './components/Rules';
 import Fonts from './components/styles/Fonts';
-import FormContainer from './components/styles/FormContainer';
-import CardPreview from './components/styles/PreviewStyles';
 import { Container } from './components/styles/GameplayStyles';
 
 import './index.css';
+import Home from './pages/Home';
 
 export default function App() {
   return (
@@ -22,16 +18,7 @@ export default function App() {
         path="/"
         element={
           <Fonts>
-            <Rules />
-            <Header />
-            <FormContainer>
-              <Form />
-              <CardPreview>
-                <Card />
-              </CardPreview>
-            </FormContainer>
-            <CardFilter />
-            <Footer />
+            <Home />
           </Fonts>
         }
       />
