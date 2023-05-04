@@ -4,9 +4,11 @@ export const RulesContainer = styled.div`
     display: ${(props) => (props.rule ? 'block' : 'none')};
     position: absolute;  
     background-color: rgba(0, 0, 0, 0.5);
-    min-width: 100%;
-    min-height: 100%;
-    z-index: 200;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;    
 
     h1 {
         font-size: calc(48rem / 16);
