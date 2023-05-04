@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { CardContext } from '../context/CardProvider';
+import React from 'react';
+import propTypes from 'prop-types';
 import Example from '../images/example.jpg';
 import CardAtts from './CardAtts';
 import RarityIcon from '../images/rarity-icon.png';
@@ -15,9 +15,19 @@ import {
 } from './styles/CardStyles';
 import SuperTrunfo from './SuperTrunfo';
 
-export default function Card({ 
-  name, rarity, image, superTrunfo, description, speed, weight, length, author, license, link }) {  
-
+export default function Card({
+  name,
+  rarity,
+  image,
+  superTrunfo,
+  description,
+  speed,
+  weight,
+  length,
+  author,
+  license,
+  link,
+}) {
   return (
     <CardFrame>
       <InnerFrame>
@@ -29,7 +39,7 @@ export default function Card({
         </Title>
         <Image>
           <img src={ image || Example } alt="Imagem da carta" />
-          <SuperTrunfo superTrunfo={superTrunfo}/>
+          <SuperTrunfo superTrunfo={ superTrunfo } />
         </Image>
         <Description>
           <span>{description}</span>
@@ -40,7 +50,27 @@ export default function Card({
           length={ length }
         />
       </InnerFrame>
-      <License href={link ? link : '#'}>{author ? `Autor: ${author} Tipo de licença: ${license}` : ''}</License>
+      <License
+        href={ link || '#' }
+      >
+        {
+          author ? `Autor: ${author} Tipo de licença: ${license}` : ''
+        }
+      </License>
     </CardFrame>
   );
 }
+
+Card.propTypes = {
+  name: propTypes.string.isRequired,
+  rarity: propTypes.string.isRequired,
+  image: propTypes.string.isRequired,
+  superTrunfo: propTypes.string.isRequired,
+  description: propTypes.string.isRequired,
+  speed: propTypes.string.isRequired,
+  weight: propTypes.string.isRequired,
+  length: propTypes.string.isRequired,
+  author: propTypes.string.isRequired,
+  license: propTypes.string.isRequired,
+  link: propTypes.string.isRequired,
+};

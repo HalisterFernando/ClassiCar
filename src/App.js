@@ -22,7 +22,7 @@ export default function App() {
         path="/gameplay"
         element={
           <Fonts>
-           <Game />              
+            <Game />
           </Fonts>
         }
       />

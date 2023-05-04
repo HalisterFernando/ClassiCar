@@ -26,8 +26,8 @@ export default function CardFilter() {
     }
 
     return cardsToRender.length > 0 && cardsToRender.map((card) => (
-      
-      <div key={ card.name }>        
+
+      <div key={ card.name }>
         <Card
           name={ card.name }
           rarity={ card.rarity }
