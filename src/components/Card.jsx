@@ -63,14 +63,20 @@ export default function Card({
 
 Card.propTypes = {
   name: propTypes.string.isRequired,
-  rarity: propTypes.string.isRequired,
+  rarity: propTypes.objectOf(propTypes.bool).isRequired,
   image: propTypes.string.isRequired,
-  superTrunfo: propTypes.string.isRequired,
+  superTrunfo: propTypes.bool.isRequired,
   description: propTypes.string.isRequired,
-  speed: propTypes.string.isRequired,
-  weight: propTypes.string.isRequired,
-  length: propTypes.string.isRequired,
-  author: propTypes.string.isRequired,
-  license: propTypes.string.isRequired,
-  link: propTypes.string.isRequired,
+  speed: propTypes.number.isRequired,
+  weight: propTypes.number.isRequired,
+  length: propTypes.number.isRequired,
+  author: propTypes.string,
+  license: propTypes.string,
+  link: propTypes.string,
+};
+
+Card.defaultProps = {
+  link: '#',
+  license: '',
+  author: '',
 };
