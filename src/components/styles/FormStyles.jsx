@@ -95,8 +95,10 @@ export const PlayButton = styled(SaveButton)`
     background-color: var(--blue-green);
     margin-left: 15px;
     transition: background-color 0.1s ease-in-out;
+    pointer-events: visibleFill;
     &:hover {
       background-color: white;
       box-shadow: 0px 2px 2px var(--blue-green);
+      
     }
 `;

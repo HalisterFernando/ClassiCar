@@ -124,6 +124,7 @@ export default function Form() {
         </SaveButton>
         <PlayButton
           type="button"
+          data-testid="play-btn"
           onClick={ () => history('/gameplay') }
         >
           Jogar

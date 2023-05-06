@@ -9,7 +9,6 @@ export default function App() {
   return (
     <Routes>
       <Route
-        exact
         path="/"
         element={
           <Fonts>
@@ -18,7 +17,6 @@ export default function App() {
         }
       />
       <Route
-        exact
         path="/gameplay"
         element={
           <Fonts>

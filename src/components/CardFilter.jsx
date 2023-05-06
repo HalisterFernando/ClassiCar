@@ -44,6 +44,7 @@ export default function CardFilter() {
         <DeleteButton
           onClick={ () => removeCard(card.name) }
           type="button"
+          data-testid="delete-btn"
         >
           Remover
         </DeleteButton>

@@ -16,7 +16,7 @@ export default function Rules() {
   };
 
   return (
-    <RulesContainer rule={ renderRules().state }>
+    <RulesContainer rule={ renderRules().state } data-testid="overlay">
       <RulesInnerContainer rule={ renderRules().urlCheck }>
         {renderRules().urlCheck ? (
           <>
@@ -43,7 +43,11 @@ export default function Rules() {
                 e se quiser jogar novamente basta clicar em Jogar novamente.
                 Divirta-se!!!
               </p>
-              <OkBtn type="button" onClick={ () => setGameRule(false) }>
+              <OkBtn
+                type="button"
+                onClick={ () => setGameRule(false) }
+                data-testid="ok-btn"
+              >
                 OK
               </OkBtn>
             </div>
@@ -71,7 +75,11 @@ export default function Rules() {
                 Basta clicar em jogar que o jogo iniciará
                 com as cartas salvas e/ou pré-definidas!
               </p>
-              <OkBtn type="button" onClick={ () => setRule(false) }>
+              <OkBtn
+                type="button"
+                onClick={ () => setRule(false) }
+                data-testid="ok-btn"
+              >
                 OK
               </OkBtn>
             </div>

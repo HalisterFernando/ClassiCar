@@ -75,6 +75,7 @@ export const DeleteButton = styled.button`
     font-size: 1.2rem;
     font-family: "Roboto", sans-serif;
     transition: background-color 0.1s ease-in-out;
+    pointer-events: visibleFill;
    
     &:hover {
       background-color: white;
