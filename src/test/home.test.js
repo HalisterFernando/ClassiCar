@@ -20,43 +20,58 @@ describe('Home', () => {
         const welcome = screen.getByText('Seja Bem-vindo ao ClassiCar Trunfo!');
         expect(welcome).toBeInTheDocument;
     });
-    it('should not be available for the user to delete a card or start the game', async () => {
+    it('should be able to create a card', async () => {
         renderWithRouter(<App />);
 
-        const playBtn = screen.queryByTestId('play-btn');
-        const deleteBtns = await screen.findAllByTestId('delete-btn');
-        const overlay = screen.getByTestId('overlay');
-        
-        expect(overlay).toBeInTheDocument;
-        expect(playBtn).toBeInTheDocument;
-        expect(deleteBtns).toBeInTheDocument;
+        const name = screen.getByTestId('card-name');
+        const description = screen.getByTestId('card-description');
+        const speed = screen.getByTestId('speed');
+        const weight = screen.getByTestId('weight');
+        const length = screen.getByTestId('length');
+        const image = screen.getByTestId('card-image')
+        const saveBtn = screen.getByTestId('save-btn');              
 
-        const overlayRect = overlay.getBoundingClientRect();
-        const playBtnRect = playBtn.getBoundingClientRect();        
-        
-        // checks if overlay is covering the play button
-        
-        expect(overlayRect.top).toBeLessThanOrEqual(playBtnRect.top);
-        expect(overlayRect.bottom).toBeGreaterThanOrEqual(playBtnRect.bottom);
-        expect(overlayRect.left).toBeLessThanOrEqual(playBtnRect.left);
-        expect(overlayRect.right).toBeGreaterThanOrEqual(playBtnRect.right);
-        
-        for (const deleteBtn of deleteBtns) {
-            const deleteBtnRect = deleteBtn.getBoundingClientRect();
-            
-            // checks if overlay is covering the delete button
+        userEvent.type(name, 'Fusca');
+        expect(name).toHaveValue('Fusca');
+       
+        userEvent.type(description, 'Famoso Volkswagen');
+        expect(description).toHaveValue('Famoso Volkswagen');
+       
+        userEvent.type(speed, '133');
+        expect(speed).toHaveValue(133);
+       
+        userEvent.type(weight, '780');
+        expect(weight).toHaveValue(780);        
+       
+        userEvent.type(length, '4');
+        expect(length).toHaveValue(4);
 
-            expect(overlayRect.top).toBeLessThanOrEqual(deleteBtnRect.top);
-            expect(overlayRect.bottom).toBeGreaterThanOrEqual(deleteBtnRect.bottom);
-            expect(overlayRect.left).toBeLessThanOrEqual(deleteBtnRect.left);
-            expect(overlayRect.right).toBeGreaterThanOrEqual(deleteBtnRect.right);
-            
-            
-            expect(deleteBtn).toHaveStyle('pointer-events: visibleFill')
-        }        
+        userEvent.type(image, 'fusca.jpg');
+        expect(image).toHaveValue('fusca.jpg');
+                
+        userEvent.click(saveBtn);
 
-               
-        expect(playBtn).toHaveStyle('pointer-events: visibleFill');
+        expect(name).toHaveValue('');
+        expect(description).toHaveValue('');
+        expect(speed).toHaveValue(0);
+        expect(weight).toHaveValue(0);
+        expect(length).toHaveValue(0);
+        expect(image).toHaveValue('');
+
+
+        const newCard = screen.getByText('Famoso Volkswagen')
+
+        expect(newCard).toBeInTheDocument;     
+    });
+    it('should be able to delete a card', () => {
+        renderWithRouter(<App />)
+
+        const deleteCard = screen.getByTestId('delete-btn-Fusca');
+
+        userEvent.click(deleteCard);
+
+        expect(deleteCard).not.toBeInTheDocument
+
     });
     it('should be able to start game after clicking ok', async () => {
         const { history } = renderWithRouter(<App />);

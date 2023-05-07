@@ -32,6 +32,7 @@ export default function Form() {
             value={ card.name }
             onChange={ handleCard }
             type="text"
+            data-testid="card-name"
           />
         </label>
         <label htmlFor="card-description">
@@ -42,6 +43,7 @@ export default function Form() {
             maxLength="96"
             value={ card.description }
             onChange={ handleCard }
+            data-testid="card-description"
           />
         </label>
         <AttributesContainer>
@@ -54,6 +56,7 @@ export default function Form() {
               min="0"
               value={ card.attributes.velocidade }
               onChange={ handleCard }
+              data-testid="speed"
             />
           </label>
           <label htmlFor="card-att2">
@@ -65,6 +68,8 @@ export default function Form() {
               min="0"
               value={ card.attributes.peso }
               onChange={ handleCard }
+              data-testid="weight"
+
             />
           </label>
           <label htmlFor="card-att3">
@@ -76,6 +81,8 @@ export default function Form() {
               min="0"
               value={ card.attributes.comprimento }
               onChange={ handleCard }
+              data-testid="length"
+
             />
           </label>
         </AttributesContainer>
@@ -88,6 +95,7 @@ export default function Form() {
             placeholder="Insira URL da imagem"
             value={ card.image }
             onChange={ handleCard }
+            data-testid="card-image"
           />
 
         </label>
@@ -110,6 +118,7 @@ export default function Form() {
             name="isTrunfo"
             checked={ card.isTrunfo }
             onChange={ handleCard }
+            data-testid="super-trunfo"
           />
           <span>Super Trunfo</span>
         </CheckSuperTrunfo>
@@ -119,6 +128,7 @@ export default function Form() {
           type="button"
           disabled={ isDisabled.disabled }
           onClick={ () => saveCard() }
+          data-testid="save-btn"
         >
           Salvar
         </SaveButton>
