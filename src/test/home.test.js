@@ -71,7 +71,29 @@ describe('Home', () => {
         userEvent.click(deleteCard);
 
         expect(deleteCard).not.toBeInTheDocument
+    });
+    it('should be able to create a super trumph card is no one exists', () => {
+        renderWithRouter(<App />)
 
+        const superTrumphCard = screen.getByTestId('delete-btn-Fusca');
+        const superTrumph = screen.getByTestId('super-trunfo');
+        const superTrumphBadges = screen.getAllByTestId('super-badge');
+
+        expect(superTrumph).not.toBeInTheDocument;
+        
+        for (const badge of superTrumphBadges ) {
+            expect(badge).not.toBeInTheDocument;
+            
+        }
+
+        userEvent.click(superTrumphCard);
+
+        expect(superTrumphCard).not.toBeInTheDocument;
+
+        userEvent.click(superTrumph)
+
+        expect(superTrumph).toBeInTheDocument;
+        expect(superTrumphBadges[0]).toHaveStyle('display: flex');
     });
     it('should be able to start game after clicking ok', async () => {
         const { history } = renderWithRouter(<App />);

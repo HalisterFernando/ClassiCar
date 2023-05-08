@@ -4,7 +4,7 @@ import SuperLogo from './styles/SuperTrunfoStyles';
 
 export default function SuperTrunfo({ superTrunfo }) {
   return (
-    <SuperLogo isTrunfo={ superTrunfo }>
+    <SuperLogo isTrunfo={ superTrunfo } data-testid="super-badge">
       <div>
         <span>Super Trunfo</span>
       </div>
