@@ -16,7 +16,8 @@ export default function CardFilter() {
     let cardsToRender = [...savedCards];
 
     if (filter.search) {
-      cardsToRender = cardsToRender.filter(({ name }) => name.includes(filter.search));
+      cardsToRender = cardsToRender
+        .filter(({ name }) => name.toLowerCase().includes(filter.search.toLowerCase()));
     }
     if (filter.rarity !== 'todas') {
       cardsToRender = cardsToRender.filter(({ rarity }) => rarity[filter.rarity]);
@@ -63,14 +64,16 @@ export default function CardFilter() {
           value={ filter.search }
           onChange={ handleFilter }
           placeholder="Digite o nome da carta"
+          data-testid="search"
         />
       </Search>
       <Options>
         <span>Raridade</span>
         <select
-          data-testid="rare-filter"
+          data-testid="rarity-filter"
           name="rarity"
           onChange={ handleFilter }
+
         >
           <option value="todas">Todas</option>
           <option value="normal">Normal</option>
@@ -83,6 +86,7 @@ export default function CardFilter() {
           name="isTrunfo"
           checked={ filter.isTrunfo }
           onChange={ handleFilter }
+          data-testid="super-trunfo-filter"
         />
         <span>Super Trunfo</span>
       </Options>

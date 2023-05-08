@@ -33,7 +33,7 @@ export default function Card({
       <InnerFrame>
         <Title>
           <span>{name}</span>
-          <CardRarity rarity={ rarity }>
+          <CardRarity rarity={ rarity } data-testid="card-rarity">
             <img src={ RarityIcon } alt="raridade" />
           </CardRarity>
         </Title>

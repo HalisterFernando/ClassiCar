@@ -95,6 +95,54 @@ describe('Home', () => {
         expect(superTrumph).toBeInTheDocument;
         expect(superTrumphBadges[0]).toHaveStyle('display: flex');
     });
+    it('should be able to filter a card by name', () => {
+        renderWithRouter(<App />)
+
+        const fusca = screen.getByTestId('delete-btn-Fusca');
+        const brasilia = screen.getByTestId('delete-btn-Brasilia');
+        const search = screen.getByTestId('search');
+
+        expect(brasilia).toBeInTheDocument;
+
+        userEvent.type(search, 'fusca');
+
+        expect(fusca).toBeInTheDocument;
+        expect(brasilia).not.toBeInTheDocument;
+    });
+    it('should be able to filter by super trumph', () => {
+        renderWithRouter(<App />);
+
+        const superTrumphCard = screen.getByTestId('delete-btn-Fusca');
+        const brasilia = screen.getByTestId('delete-btn-Brasilia');
+        const superTrumphCheck = screen.getByTestId('super-trunfo-filter');
+
+        expect(brasilia).toBeInTheDocument;
+
+        userEvent.click(superTrumphCheck);
+
+        expect(brasilia).not.toBeInTheDocument;
+        expect(superTrumphCard).toBeInTheDocument;
+    });
+    it('should be able to filter a card by rarity', () => {
+        renderWithRouter(<App />);
+
+        const rarityFilter = screen.getByTestId('rarity-filter');   
+        
+        const [todas, normal, raro, muitoRaro] = rarityFilter.options
+        
+        const checkCardRarity = (option) => {            
+            userEvent.selectOptions(rarityFilter, option);
+            const rarities = screen.getAllByTestId('card-rarity');
+            const styles = rarities.map((rarity) => window.getComputedStyle(rarity).backgroundColor);
+            styles.shift();
+            return styles            
+        }
+        
+        checkCardRarity(normal).every((bg) => expect(bg).toBe('rgb(243, 243, 243)'));
+        checkCardRarity(raro).every((bg) => expect(bg).toBe('silver'));
+        checkCardRarity(muitoRaro).every((bg) => expect(bg).toBe('gold'));
+
+    });
     it('should be able to start game after clicking ok', async () => {
         const { history } = renderWithRouter(<App />);
 
