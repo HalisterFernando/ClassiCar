@@ -235,16 +235,13 @@ describe('Home', () => {
         }
     });
     it('should be able to start game after clicking ok', async () => {
-        const { history } = renderWithRouter(<App />);
+        renderWithRouter(<App />);
 
-        userEvent.click(screen.getByText('OK'))
-        userEvent.click(screen.getByTestId('play-btn'))
-        
-        history.push('/gameplay')
+        userEvent.click(screen.getByText('OK'));
+        userEvent.click(screen.getByTestId('play-btn'));        
         
         await waitFor(() => {
-            expect(mockedUsedNavigate).toHaveBeenCalledTimes(1)
-            expect(history.location.pathname).toBe('/gameplay')
+            expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);            
         });       
     });
 })
