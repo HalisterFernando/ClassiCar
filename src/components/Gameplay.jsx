@@ -146,7 +146,7 @@ export default function Gameplay() {
     <GameMainContainer>
       <Setup>
         <Select htmlFor="select-att" next={ game.next } endGame={ game.endGame }>
-          <select id="select-att" onChange={ handleAtt }>
+          <select id="select-att" onChange={ handleAtt } data-testid="attributes">
             <option selected disabled>Escolha um atributo</option>
             <option value="velocidade">Velocidade</option>
             <option value="peso">Peso</option>
@@ -165,6 +165,7 @@ export default function Gameplay() {
           next={ game.next }
           endGame={ game.endGame }
           disabled={ game.selectedAtt === '' }
+          data-testid="next"
         >
           Avançar
         </Continue>
