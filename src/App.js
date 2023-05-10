@@ -7,23 +7,11 @@ import Game from './pages/Game';
 
 export default function App() {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Fonts>
-            <Home />
-          </Fonts>
-        }
-      />
-      <Route
-        path="/gameplay"
-        element={
-          <Fonts>
-            <Game />
-          </Fonts>
-        }
-      />
-    </Routes>
+    <Fonts>
+      <Routes>
+        <Route path="/" element={ <Home /> } />
+        <Route path="/gameplay" element={ <Game /> } />
+      </Routes>
+    </Fonts>
   );
 }

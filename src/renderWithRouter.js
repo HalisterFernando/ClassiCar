@@ -1,25 +1,21 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import CardProvider from './context/CardProvider';
 import GameProvider from './context/GameProvider';
 
 const renderWithRouter = (component, { route = '/' } = {}) => {
-  const history = createMemoryHistory({ initialEntries: [route] });
+  window.history.pushState({}, 'App', route);
   return ({
     ...render(
-      <BrowserRouter history={ history }>
+      <BrowserRouter>
         <CardProvider>
           <GameProvider>
-            <Routes>
-              <Route path={ route } element={ component } />
-            </Routes>
+            {component}
           </GameProvider>
         </CardProvider>
       </BrowserRouter>,
     ),
-    history,
   });
 };
 export default renderWithRouter;
