@@ -55,12 +55,8 @@ export default function GameProvider(props) {
       const { attributes: playerAtts } = game.playerHand[game.index];
       const { attributes: cpuAtts } = game.cpuHand[game.index];
 
-      const arePlayerAttsGT = (
-        playerAtts[Number(game.selectedAtt)] > cpuAtts[Number(game.selectedAtt)]
-      );
-      const arePlayerAttsLT = (
-        playerAtts[Number(game.selectedAtt)] < cpuAtts[Number(game.selectedAtt)]
-      );
+      const arePlayerAttsGT = playerAtts[game.selectedAtt] > cpuAtts[game.selectedAtt];
+      const arePlayerAttsLT = playerAtts[game.selectedAtt] < cpuAtts[game.selectedAtt];
       const isSuperTrunfo = playerAtts[game.selectedAtt] === 'super trunfo';
 
       if (arePlayerAttsGT || isSuperTrunfo) {

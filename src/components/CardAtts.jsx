@@ -47,7 +47,7 @@ export default function CardAtts({ speed, weight, length }) {
 }
 
 CardAtts.propTypes = {
-  speed: propTypes.string.isRequired,
-  weight: propTypes.string.isRequired,
-  length: propTypes.string.isRequired,
+  speed: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
+  weight: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
+  length: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
 };
