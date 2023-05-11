@@ -10,7 +10,7 @@ export default function CardProvider(props) {
   const [card, setCard] = useState({
     name: '',
     description: '',
-    attributes: { velocidade: 0, peso: 0, comprimento: 0 },
+    attributes: { velocidade: '0', peso: '0', comprimento: '0' },
     image: '',
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -78,7 +78,7 @@ export default function CardProvider(props) {
     setCard({
       name: '',
       description: '',
-      attributes: { velocidade: 0, peso: 0, comprimento: 0 },
+      attributes: { velocidade: '0', peso: '0', comprimento: '0' },
       image: '',
       rarity: { normal: true, raro: false, muitoRaro: false },
       isTrunfo: false,

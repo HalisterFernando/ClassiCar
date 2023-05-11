@@ -33,7 +33,7 @@ export default
   {
     name: 'Fusca',
     description: 'Primeiro carro produdizo pela companhia alemã Volkswagen',
-    attributes: { velocidade: 133, peso: 780, comprimento: 4 },
+    attributes: { velocidade: '133', peso: '780', comprimento: '4' },
     image: Fusca,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: true,
@@ -42,7 +42,7 @@ export default
   {
     name: 'Brasilia',
     description: 'Foi um dos primeiros Volkswagen a serem projetados e construídos no Brasil',
-    attributes: { velocidade: 138, peso: 890, comprimento: 4.2 },
+    attributes: { velocidade: '138', peso: '890', comprimento: '4.2' },
     image: Brasilia,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -51,7 +51,7 @@ export default
   {
     name: 'Maverick',
     description: 'Criado pela Ford dos Estados Unidos, que obteve relativo sucesso em seu país de origem ',
-    attributes: { velocidade: 182, peso: 1390, comprimento: 4.5 },
+    attributes: { velocidade: '182', peso: '1390', comprimento: '4.5' },
     image: Maverick,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -60,7 +60,7 @@ export default
   {
     name: 'VW 1600',
     description: 'Suas formas retangulares lhe renderam o curioso apelido de "Zé do Caixão"',
-    attributes: { velocidade: 131, peso: 925, comprimento: 4.1 },
+    attributes: { velocidade: '131', peso: '925', comprimento: '4.1' },
     image: VW1600,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -69,7 +69,7 @@ export default
   {
     name: 'VW 1600 TL',
     description: 'Foi eleito pela Revista Autoesporte o Carro do Ano de 1971.',
-    attributes: { velocidade: 139, peso: 920, comprimento: 4.3 },
+    attributes: { velocidade: '139', peso: '920', comprimento: '4.3' },
     image: TL,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -78,7 +78,7 @@ export default
   {
     name: 'Aero Willys',
     description: 'Foi fabricado pela Willys Overland do Brasil entre 1960 e 1971.',
-    attributes: { velocidade: 120, peso: 1440, comprimento: 4.6 },
+    attributes: { velocidade: '120', peso: '1440', comprimento: '4.6' },
     image: Aero,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -88,7 +88,7 @@ export default
   {
     name: 'Belina',
     description: 'Lançada em 1970 e descontinuada em 1991, ela era pertencente a família do Corcel',
-    attributes: { velocidade: 129, peso: 980, comprimento: 4.4 },
+    attributes: { velocidade: '129', peso: '980', comprimento: '4.4' },
     image: Belina,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -97,7 +97,7 @@ export default
   {
     name: 'C-10',
     description: 'É a segunda linha de picapes que a GM produziu no Brasil, entre 1964 e 1997',
-    attributes: { velocidade: 130, peso: 1570, comprimento: 4.8 },
+    attributes: { velocidade: '130', peso: '1570', comprimento: '4.8' },
     image: C10,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -106,7 +106,7 @@ export default
   {
     name: 'Charger R/T',
     description: 'O modelo Charger R/T foi descontinuado em 1980 devido ao baixo número de vendas',
-    attributes: { velocidade: 180, peso: 1525, comprimento: 4.9 },
+    attributes: { velocidade: '180', peso: '1525', comprimento: '4.9' },
     image: Charger,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -115,7 +115,7 @@ export default
   {
     name: 'Chevette',
     description: 'Lançado na década de 70, o Chevette tornou-se um dos mais populares veículos produzidos pela GM no Brasil.',
-    attributes: { velocidade: 140, peso: 880, comprimento: 4.1 },
+    attributes: { velocidade: '140', peso: '880', comprimento: '4.1' },
     image: Chevette,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -125,7 +125,7 @@ export default
   {
     name: 'Corcel',
     description: 'Eleito pela revista Autoesporte o Carro do Ano em 1969, 1973 e 1979.',
-    attributes: { velocidade: 133, peso: 943, comprimento: 4.4 },
+    attributes: { velocidade: '133', peso: '943', comprimento: '4.4' },
     image: Corcel,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -134,7 +134,7 @@ export default
   {
     name: 'Belcar',
     description: 'Foi um automóvel brasileiro produzido pela Vemag, sob licença da fábrica alemã DKW, entre 1958 e 1967',
-    attributes: { velocidade: 125, peso: 940, comprimento: 4.4 },
+    attributes: { velocidade: '125', peso: '940', comprimento: '4.4' },
     image: DKW,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -143,7 +143,7 @@ export default
   {
     name: 'Fiat 147',
     description: 'Primeiro carro produzido pela FIAT do Brasil que inaugurava sua fábrica em Betim (MG) em 1976,',
-    attributes: { velocidade: 140, peso: 796, comprimento: 3.6 },
+    attributes: { velocidade: '140', peso: '796', comprimento: '3.6' },
     image: F147,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -152,7 +152,7 @@ export default
   {
     name: 'Galaxie',
     description: 'É considerado pelos antigomobilistas o carro mais luxuoso do Brasil.',
-    attributes: { velocidade: 160, peso: 1854, comprimento: 5.4 },
+    attributes: { velocidade: '160', peso: '1854', comprimento: '5.4' },
     image: Galaxie,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -161,7 +161,7 @@ export default
   {
     name: 'Gordini',
     description: 'Ganhou o apelido "Leite Glória", baseado no slogan da época a frase "Desmancha sem bater"',
-    attributes: { velocidade: 135, peso: 780, comprimento: 3.9 },
+    attributes: { velocidade: '135', peso: '780', comprimento: '3.9' },
     image: Gordini,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -170,7 +170,7 @@ export default
   {
     name: 'Romi-Isetta',
     description: 'Produzido no Brasil, entre 1956 e 1961, pelas Indústrias Romi S.A., com sede em Santa Bárbara d\'Oeste, interior de São Paulo.',
-    attributes: { velocidade: 85, peso: 350, comprimento: 2.2 },
+    attributes: { velocidade: '85', peso: '350', comprimento: '2.2' },
     image: Isetta,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -179,7 +179,7 @@ export default
   {
     name: 'Karmann-Ghia',
     description: 'Produzido pela Volkswagen, projetado pela empresa italiana Carrozzeria Ghia, e construído pela empresa alemã Karmann',
-    attributes: { velocidade: 139, peso: 830, comprimento: 4.1 },
+    attributes: { velocidade: '139', peso: '830', comprimento: '4.1' },
     image: Karmann,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -188,7 +188,7 @@ export default
   {
     name: 'Kombi',
     description: 'No Brasil, foi fabricada ininterruptamente entre 2 de setembro de 1957 e 18 de dezembro de 2013.',
-    attributes: { velocidade: 100, peso: 1297, comprimento: 4.5 },
+    attributes: { velocidade: '100', peso: '1297', comprimento: '4.5' },
     image: Kombi,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -197,7 +197,7 @@ export default
   {
     name: 'Opala',
     description: 'Fabricado pela GM do Brasil, sendo o primeiro veículo de passeio da montadora no país, produzido de 1968 a 1992.',
-    attributes: { velocidade: 170, peso: 1125, comprimento: 4.5 },
+    attributes: { velocidade: '170', peso: '1125', comprimento: '4.5' },
     image: Opala,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -206,7 +206,7 @@ export default
   {
     name: 'Passat',
     description: 'Sua introdução em 1973 foi decisiva, pois as vendas do Volkswagen Fusca estavam caindo, ',
-    attributes: { velocidade: 150, peso: 910, comprimento: 4.1 },
+    attributes: { velocidade: '150', peso: '910', comprimento: '4.1' },
     image: Passat,
     rarity: { normal: true, raro: false, muitoRaro: false },
     isTrunfo: false,
@@ -215,7 +215,7 @@ export default
   {
     name: 'Puma GTE',
     description: 'Produzido com carroceria de fibra de vidro e mecânica Volkswagen boxer entre os anos de 1970 e 1980',
-    attributes: { velocidade: 158, peso: 785, comprimento: 4 },
+    attributes: { velocidade: '158', peso: '785', comprimento: '4' },
     image: Puma,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -224,7 +224,7 @@ export default
   {
     name: 'Rural',
     description: 'Lançado nos Estados Unidos em 1946 com o nome de Jeep Station Wagon',
-    attributes: { velocidade: 132, peso: 1418, comprimento: 4.5 },
+    attributes: { velocidade: '132', peso: '1418', comprimento: '4.5' },
     image: Rural,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -233,7 +233,7 @@ export default
   {
     name: 'Simca Chambord',
     description: ' Foi o primeiro automóvel de luxo a ser construído no Brasil sob licença, desde 1959 até 1967',
-    attributes: { velocidade: 140, peso: 1215, comprimento: 4.7 },
+    attributes: { velocidade: '140', peso: '1215', comprimento: '4.7' },
     image: Simca,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -242,7 +242,7 @@ export default
   {
     name: 'SP2',
     description: 'A série SP foi uma série de carros esporte desenvolvidos pela Volkswagen do Brasil para o mercado interno, de 1972 a 1976',
-    attributes: { velocidade: 161, peso: 890, comprimento: 4.2 },
+    attributes: { velocidade: '161', peso: '890', comprimento: '4.2' },
     image: SP2,
     rarity: { normal: false, raro: false, muitoRaro: true },
     isTrunfo: false,
@@ -251,7 +251,7 @@ export default
   {
     name: 'Variant',
     description: 'Station Wagon derivada dos modelos VW 1600',
-    attributes: { velocidade: 135, peso: 950, comprimento: 4.3 },
+    attributes: { velocidade: '135', peso: '950', comprimento: '4.3' },
     image: Variant,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
@@ -260,7 +260,7 @@ export default
   {
     name: 'Veraneio',
     description: 'Inicialmente, chamava-se C-1416 (nome usado até 1969). O modelo dispunha de quatro portas e podia acomodar até 09 (nove) pessoas',
-    attributes: { velocidade: 142, peso: 2000, comprimento: 5.1 },
+    attributes: { velocidade: '142', peso: '2000', comprimento: '5.1' },
     image: Veraneio,
     rarity: { normal: false, raro: true, muitoRaro: false },
     isTrunfo: false,
