@@ -32,17 +32,21 @@ export default function Card({
     <CardFrame>
       <InnerFrame>
         <Title>
-          <span>{name}</span>
+          <span data-testid="preview-name">{name}</span>
           <CardRarity rarity={ rarity } data-testid="card-rarity">
             <img src={ RarityIcon } alt="raridade" />
           </CardRarity>
         </Title>
         <Image>
-          <img src={ image || Example } alt="Imagem da carta" />
+          <img
+            data-testid="preview-image"
+            src={ image || Example }
+            alt="Imagem da carta"
+          />
           <SuperTrunfo superTrunfo={ superTrunfo } />
         </Image>
         <Description>
-          <span>{description}</span>
+          <span data-testid="preview-description">{description}</span>
         </Description>
         <CardAtts
           speed={ speed }

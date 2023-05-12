@@ -15,7 +15,7 @@ export default function CardAtts({ speed, weight, length }) {
         <span>
           Velocidade
 
-          <p>{`${speed} Km/h`}</p>
+          <p data-testid="preview-speed">{`${speed} Km/h`}</p>
 
         </span>
       </Attributes>
@@ -26,7 +26,7 @@ export default function CardAtts({ speed, weight, length }) {
         <span>
           Peso
 
-          <p>{`${weight} kg`}</p>
+          <p data-testid="preview-weight">{`${weight} kg`}</p>
 
         </span>
       </Attributes>
@@ -37,7 +37,7 @@ export default function CardAtts({ speed, weight, length }) {
         <span>
           Comprimento
 
-          <p>{`${length} mts`}</p>
+          <p data-testid="preview-length">{`${length} mts`}</p>
 
         </span>
       </Attributes>
