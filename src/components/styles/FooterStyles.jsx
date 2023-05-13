@@ -21,7 +21,9 @@ export const FooterContainer = styled.footer`
     }       
 `;
 
-export const Links = styled.div`  
+export const Links = styled.div` 
+    scroll-behavior: smooth;
+    transition-duration: 500ms;
     nav {
         display: flex;        
         gap: 30px;

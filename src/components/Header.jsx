@@ -13,13 +13,18 @@ export default function Header() {
     return regex.test(url) ? setGameRule(true) : setRule(true);
   };
 
+  const scrollToContact = () => {
+    const contact = document.getElementById('contact');
+    contact.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <HeaderContainer>
       <h1>ClassiCar Trunfo</h1>
       <div>
-        <a href="#contact">
+        <button type="button" onClick={ () => scrollToContact() }>
           Contato
-        </a>
+        </button>
         <button type="button" onClick={ () => renderRules() }>
           Regras
         </button>
