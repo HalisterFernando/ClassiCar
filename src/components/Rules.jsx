@@ -46,7 +46,7 @@ export default function Rules() {
               <OkBtn
                 type="button"
                 onClick={ () => setGameRule(false) }
-                data-testid="ok-btn"
+                data-testid="ok-gameplay-btn"
               >
                 OK
               </OkBtn>

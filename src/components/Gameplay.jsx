@@ -175,6 +175,7 @@ export default function Gameplay() {
           endGame={ game.endGame }
           type="button"
           onClick={ () => nextCard() }
+          data-testid="next-card-btn"
         >
           Próxima Carta
         </NextCard>
@@ -188,6 +189,8 @@ export default function Gameplay() {
           type="button"
           endGame={ game.endGame }
           onClick={ () => newGame() }
+          data-testid="play-again-btn"
+
         >
           Jogar novamente
         </PlayAgain>

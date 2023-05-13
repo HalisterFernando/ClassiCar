@@ -1,4 +1,4 @@
-describe('Home', () => {
+describe('e2e test suite', () => {
   beforeEach(() => {
     cy.visit('/');
   });
@@ -6,10 +6,10 @@ describe('Home', () => {
     cy.contains('Seja Bem-vindo ao ClassiCar Trunfo!');
   });
   it('should be able to create a card', () => {
-    cy.get('[data-testid="ok-btn"').click();
-
+    const okBtn = cy.get('[data-testid="ok-btn"');
+    okBtn.click()
+   
     const saveBtn = cy.get('[data-testid="save-btn"]');
-
     saveBtn.should('be.disabled');
 
     const cardName = cy.get('[data-testid="card-name"]');
@@ -48,5 +48,45 @@ describe('Home', () => {
     saveBtn.click();
 
     cy.contains('Niva');
+  });
+  it('should be able to play a match', () => {
+    const okBtn = cy.get('[data-testid="ok-btn"');
+    const playBtn = cy.get('[data-testid="play-btn"]');
+    
+    okBtn.click();
+    playBtn.click();
+    
+    cy.url().should('include', '/gameplay')
+    
+    const okGameplay = cy.get('[data-testid="ok-gameplay-btn"]');
+    okGameplay.click();
+    
+    const attributes = cy.get('[data-testid="attributes"]');    
+    const nextBtn = cy.get('[data-testid="next"]');
+
+    nextBtn.should('be.disabled');
+    
+    const gamePlay = (attr, count) => {
+      attributes.select(attr);
+      nextBtn.click();
+      const nextCardBtn = cy.get('[data-testid="next-card-btn"]');
+      
+      if (count === 9) return;
+
+      nextCardBtn.click();
+    }
+
+    const getRandomNumber = () => Math.floor(Math.random() * 3);
+    
+    const attributesArr = ['velocidade', 'peso', 'comprimento'];
+
+    for (let i = 0; i < 10; i += 1) {
+      const index = getRandomNumber();
+      const randomAttribute =  attributesArr[index];
+
+      gamePlay(randomAttribute, i);
+    };
+
+    cy.contains('Jogar novamente');   
   });
 });
