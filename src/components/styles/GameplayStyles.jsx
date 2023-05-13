@@ -22,7 +22,7 @@ export const GameContainer = styled.div`
 `;
 
 export const CpuCard = styled.div`
-    display: ${(props) => (props.next ? 'block' : 'none')};
+    display: ${(props) => (props.next ? 'block' : 'none')};    
 `;
 
 export const NextCard = styled.button`
@@ -133,9 +133,4 @@ export const PlayAgain = styled.button`
         color: white;
         text-shadow: 1px 1px black;
         display: ${(props) => (props.endGame ? 'block' : 'none')}
-`;
-
-export const QuestionCard = styled.div`
-    display: ${(props) => (props.next ? 'none' : 'block')};    
-
 `;

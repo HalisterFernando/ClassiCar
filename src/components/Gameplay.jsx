@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CardContext } from '../context/CardProvider';
 import { GameContext } from '../context/GameProvider';
-import Question from '../images/questionMark.png';
+
 import {
   Continue,
   CpuCard,
@@ -9,13 +9,13 @@ import {
   GameMainContainer,
   NextCard,
   PlayAgain,
-  QuestionCard,
   Result,
   Score,
   Select,
   Setup,
 } from './styles/GameplayStyles';
 import Card from './Card';
+import BackCard from './BackCard';
 
 const INDEXLIMIT = 9;
 const VALUE = 0.5;
@@ -199,18 +199,7 @@ export default function Gameplay() {
         <div>
           {gameRender()}
         </div>
-        <QuestionCard next={ game.next }>
-          <Card
-            image={ Question }
-            name="?"
-            speed="?"
-            weight="?"
-            length="?"
-            license=""
-            author=""
-            link=""
-          />
-        </QuestionCard>
+        <BackCard next={ game.next } />
         <CpuCard next={ game.next }>
           {nextStep()}
         </CpuCard>
