@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const GameMainContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
     
 `;
 
@@ -21,8 +21,17 @@ export const GameContainer = styled.div`
     padding: 0 40px;
 `;
 
-export const CpuCard = styled.div`
-    display: ${(props) => (props.next ? 'block' : 'none')};    
+export const CardFlip = styled.div`
+     position: relative;
+     transform-style: preserve-3d;
+     transition: transform 1s;
+     width: 400px;
+     transform: ${(props) => (props.next ? 'rotateY( 180deg )' : 'none')};
+`;
+
+export const CpuCard = styled.div`    
+    backface-visibility: hidden;  
+    transform: rotateY( 180deg ); 
 `;
 
 export const NextCard = styled.button`

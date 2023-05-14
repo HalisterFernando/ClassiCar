@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const BackCardFrame = styled.div`
-  display: ${(props) => (!props.next ? 'flex' : 'none')};
+  position: absolute;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 368px;
   height: 549px;
   background: var(--white-fa);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;  
+  border-radius: 10px;   
+  backface-visibility: hidden;
 `;
 
 export const BackInnerFrame = styled.div`
@@ -43,8 +45,7 @@ export const BackInnerFrame = styled.div`
           font-family: 'Lobster';
           font-size:calc(58rem / 16);
           color: var(--white-fa);
-          text-shadow: 0 1px 3px black;
-          transform: rotate(-18.92deg);
+          text-shadow: 0 1px 3px black;          
         }
     }
 `;

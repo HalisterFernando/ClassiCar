@@ -3,6 +3,7 @@ import { CardContext } from '../context/CardProvider';
 import { GameContext } from '../context/GameProvider';
 
 import {
+  CardFlip,
   Continue,
   CpuCard,
   GameContainer,
@@ -199,10 +200,12 @@ export default function Gameplay() {
         <div>
           {gameRender()}
         </div>
-        <BackCard next={ game.next } />
-        <CpuCard next={ game.next }>
-          {nextStep()}
-        </CpuCard>
+        <CardFlip next={ game.next }>
+          <BackCard />
+          <CpuCard next={ game.next }>
+            {nextStep()}
+          </CpuCard>
+        </CardFlip>
       </GameContainer>
     </GameMainContainer>
   );

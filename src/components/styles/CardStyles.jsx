@@ -7,6 +7,8 @@ export const CardFrame = styled.div`
   background: var(--white-fa);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   border-radius: 10px;  
+  backface-visibility: hidden;
+  
 `;
 
 export const InnerFrame = styled.div`
