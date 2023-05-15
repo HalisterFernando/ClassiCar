@@ -1,17 +1,15 @@
 import React, { useContext } from 'react';
 import { CardContext } from '../context/CardProvider';
 import { GameContext } from '../context/GameProvider';
-import HeaderContainer from './styles/HeaderStyles';
+import { HeaderContainer, ContactBtn } from './styles/HeaderStyles';
 
 export default function Header() {
   const { setRule } = useContext(CardContext);
   const { setGameRule } = useContext(GameContext);
 
-  const renderRules = () => {
-    const regex = /gameplay/gi;
-    const url = window.location.href;
-    return regex.test(url) ? setGameRule(true) : setRule(true);
-  };
+  const isGameplay = window.location.href.includes('gameplay');
+
+  const renderRules = () => (isGameplay ? setGameRule(true) : setRule(true));
 
   const scrollToContact = () => {
     const contact = document.getElementById('contact');
@@ -22,9 +20,9 @@ export default function Header() {
     <HeaderContainer>
       <h1>ClassiCar Trunfo</h1>
       <div>
-        <button type="button" onClick={ () => scrollToContact() }>
+        <ContactBtn game={ isGameplay } type="button" onClick={ () => scrollToContact() }>
           Contato
-        </button>
+        </ContactBtn>
         <button type="button" onClick={ () => renderRules() }>
           Regras
         </button>

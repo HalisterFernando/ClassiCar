@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,4 +35,20 @@ const HeaderContainer = styled.header`
     }  
 `;
 
-export default HeaderContainer;
+export const ContactBtn = styled.button`
+    display: ${(props) => (props.game ? 'none' : 'inline')};    
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;       
+    box-shadow: 0 2px 2px black;
+    transition: background-color 0.3s ease-in-out;
+    margin: 0 15px;
+    &:hover {
+        background-color: #aec8bf;
+    }
+    
+`;
