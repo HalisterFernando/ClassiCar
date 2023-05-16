@@ -22,7 +22,9 @@
     "eject": "react-scripts eject",
     "lint:styles": "npx stylelint '**/*.css'",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down"
   },
   "eslintConfig": {
     "extends": [
