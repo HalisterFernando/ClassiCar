@@ -9,7 +9,7 @@ export const FilterContainer = styled.section`
     h2 {
       font-family: 'Lobster', cursive;
       font-weight: 400;
-      font-size: 2.5rem;
+      font-size: calc(40rem / 16);
       text-shadow: 2px 2px white;
     }
 
@@ -39,7 +39,7 @@ export const Options = styled.div`
   span {
     margin-right: 10px;
     font-family: "Roboto", sans-serif;
-    font-size: 1.5rem;
+    font-size: calc(24rem / 16);
     font-weight: bold;
     text-shadow: 1px 1px white;
   }
@@ -72,7 +72,7 @@ export const DeleteButton = styled.button`
     border: none;
     box-shadow: 0px 2px 2px white;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: calc(18rem / 16);
     font-family: "Roboto", sans-serif;
     transition: background-color 0.1s ease-in-out;
     pointer-events: visibleFill;

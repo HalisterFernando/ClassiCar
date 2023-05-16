@@ -12,7 +12,7 @@ export const CardForm = styled.div`
 
     h4 {
         font-family: "Roboto", sans-serif;
-        font-size: 1.2rem;
+        font-size: calc(18rem /16);
         margin: 8px 0;
         text-shadow: 1px 1px white;
     }
@@ -57,7 +57,7 @@ export const AttributesContainer = styled.div`
     span {
         font-family: "Roboto", sans-serif;
         font-weight: 600;
-        font-size: var(--19px);
+        font-size: calc(18rem / 16);
         text-shadow: 1px 1px white;
     }
 `;
@@ -79,7 +79,7 @@ export const SaveButton = styled.button`
     box-shadow: 0px 2px 2px white;
     padding: 5px 10px;
     margin-top: 10px;
-    font-size: 1.1rem;
+    font-size: calc(18rem / 16);
     font-family: "Roboto", sans-serif;
     background-color: ${(props) => {
     if (props.available) {

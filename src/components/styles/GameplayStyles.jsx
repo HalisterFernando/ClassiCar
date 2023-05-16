@@ -51,7 +51,7 @@ export const Result = styled.span`
   }};
     text-align: center;
     font-weight: 300;
-    font-size: 2.5rem;
+    font-size: calc(40rem / 16);
     font-family: 'Lobster', cursive;
     text-shadow: 1px 1px white;
 `;
@@ -80,7 +80,7 @@ export const Select = styled.label`
     
     select {
         padding: 5px;
-        font-size: 1.2rem;
+        font-size: calc(18rem / 16);
         border-radius: 5px;
     }
    
@@ -98,7 +98,7 @@ export const Setup = styled.div`
         border: none;
         background-color: var(--blue-green);
         box-shadow: 0px 2px 2px white;
-        font-size: 1.5rem;
+        font-size: calc(24rem / 16);
         font-family: 'Lobster', cursive;
         color: white;
         text-shadow: 1px 1px black;
@@ -107,7 +107,7 @@ export const Setup = styled.div`
     h2 {
         text-align: center;
         font-weight: 300;
-        font-size: 2.5rem;
+        font-size: calc(40rem / 16);
         font-family: 'Lobster', cursive;
         text-shadow: 1px 1px white;
     }
@@ -118,7 +118,7 @@ export const Score = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    font-size: 1.8rem;
+    font-size: calc(28rem / 16);
     font-family: 'Lobster', cursive;
     text-shadow: 1px 1px white;
 `;
@@ -126,7 +126,7 @@ export const Score = styled.div`
 export const Message = styled.span`
     text-align: center;
     font-weight: 300;
-    font-size: 2.5rem;
+    font-size: calc(40rem / 16);
     font-family: 'Lobster', cursive;
     text-shadow: 1px 1px white;
 `;
@@ -137,7 +137,7 @@ export const PlayAgain = styled.button`
         border: none;
         background-color: var(--blue-green);
         box-shadow: 0px 2px 2px white;
-        font-size: 1.5rem;
+        font-size: calc(24rem / 16);
         font-family: 'Lobster', cursive;
         color: white;
         text-shadow: 1px 1px black;

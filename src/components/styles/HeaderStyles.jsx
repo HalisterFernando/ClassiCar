@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
     border-bottom: 15px double white; 
 
     h1 {
-        font-size: 2.5rem;
+        font-size: calc(40rem / 16);
         font-family: 'Lobster', cursive;
         font-weight: 300;
         color: white;
@@ -24,7 +24,7 @@ export const HeaderContainer = styled.header`
         border-radius: 5px;
         padding: 5px 30px;
         font-family: "Roboto", sans-serif;
-        font-size: 1.2rem;
+        font-size: calc(18rem / 16);
         font-weight: bold;       
         box-shadow: 0 2px 2px black;
         transition: background-color 0.3s ease-in-out;
@@ -42,7 +42,7 @@ export const ContactBtn = styled.button`
     border-radius: 5px;
     padding: 5px 30px;
     font-family: "Roboto", sans-serif;
-    font-size: 1.2rem;
+    font-size: calc(18rem / 16);
     font-weight: bold;       
     box-shadow: 0 2px 2px black;
     transition: background-color 0.3s ease-in-out;

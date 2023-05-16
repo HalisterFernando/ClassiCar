@@ -52,7 +52,7 @@ export const Title = styled.div`
 
     span {      
       font-family: 'Lobster', cursive;
-      font-size: 1.8rem;
+      font-size: calc(28rem / 16);
       font-weight: 400;
       color: white;
       text-shadow: 2px 2px 5px black;
@@ -70,13 +70,13 @@ export const Description = styled.div`
     padding: 5px 8px;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-    font-size: 18px;
+    font-size: calc(18rem / 16);
     line-height: 13px;
     background-color: var(--blue-green);        
 
     span {
       color: var(--white-fa);
-      font-size: 14px;
+      font-size: calc(14rem / 16);
       line-height: normal;
       text-align: justify;
       overflow-wrap: break-word;

@@ -15,7 +15,7 @@ export const FooterContainer = styled.footer`
         padding: 0 15px 0 15px;
         font-family: 'Roboto', sans-serif;
         color: white;
-        font-size: 1rem;
+        font-size: calc(16rem / 16);
         text-align: center;
         text-shadow: 0 1px 3px black;
     }       
@@ -32,7 +32,7 @@ export const Links = styled.div`
         a {
             text-decoration: none;
             color: white;
-            font-size: 2.5rem;
+            font-size: calc(40rem / 16);
             filter: drop-shadow(2px 1px 1px black);
             &:hover {
                 color: black;
