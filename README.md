@@ -14,9 +14,11 @@ Esta aplicação simula o jogo de cartas Super Trunfo com uma temática de carro
 
 * React
 * Styled Components
-* JavaScript
-* HTML
-* React-icons
+
+## Próximos passos :hammer:
+
+* Adicionar efeitos sonoros
+* Dockerizar aplicação
 
 ## Instalando Dependências e Iniciando a Aplicação
 
