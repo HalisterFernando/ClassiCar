@@ -18,10 +18,25 @@ Esta aplicação simula o jogo de cartas Super Trunfo com uma temática de carro
 ## Próximos passos :hammer:
 
 * Adicionar efeitos sonoros
-* Dockerizar aplicação
 
 ## Instalando Dependências e Iniciando a Aplicação
+### Você precisa ter node 18 para rodar direto na máquina :warning:
 
 ```bash
 cd Classicar/npm install
 npm start
+```
+## Rodando via Docker :whale:
+### Subir o container :point_up:
+```bash
+npm run compose:up 
+``` 
+### Descendo o container :point_down:
+```bash
+npm run compose:up 
+```
+
+
+
+
+
